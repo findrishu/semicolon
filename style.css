@@ -1,1 +1,105 @@
+/* Base styles and Variables */
+:root {
+    --font-heading: 'Poppins', 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-code: 'Fira Code', 'JetBrains Mono', monospace;
+    
+    --bg-color: #0d1117; /* Sleek dark mode */
+    --text-color: #e6edf3;
+    --panel-bg: #161b22;
+    --border-color: #30363d;
+    --primary-accent: #58a6ff;
+}
 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--panel-bg);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-family: var(--font-heading);
+    margin: 0;
+    font-size: 2rem;
+    background: linear-gradient(90deg, #58a6ff, #bc8cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+header h1:hover {
+    transform: translateY(-2px);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+#visualization-area {
+    flex: 3;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.placeholder {
+    font-size: 1.5rem;
+    color: #8b949e;
+    opacity: 0.7;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.4; }
+}
+
+#code-panel {
+    flex: 1;
+    background-color: var(--panel-bg);
+    border-left: 1px solid var(--border-color);
+    padding: 1.5rem;
+    overflow-y: auto;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+}
+
+#code-panel h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+#code-panel pre {
+    font-family: var(--font-code);
+    font-size: 0.95rem;
+    border-radius: 8px;
+    padding: 1.2rem;
+    background-color: #0d1117 !important; /* override highlight.js default if needed */
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+}
