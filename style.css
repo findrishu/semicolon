@@ -1,27 +1,31 @@
-/* Base styles and Variables */
+/* Priyanshu, yeh :root wala block variables banata hai, 
+   taaki hum baar-baar same color ka code na likhein aur directly variable name use karein. */
 :root {
     --font-heading: 'Poppins', 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
     --font-code: 'Fira Code', 'JetBrains Mono', monospace;
     
-    --bg-color: #0d1117; /* Sleek dark mode */
+    /* Priyanshu, yahan se dark mode ke colors set ho rahe hain */
+    --bg-color: #0d1117; 
     --text-color: #e6edf3;
     --panel-bg: #161b22;
     --border-color: #30363d;
     --primary-accent: #58a6ff;
 }
 
+/* Priyanshu, body pe hum default margin/padding hata dete hain taaki puri screen properly use ho sake. */
 body {
     margin: 0;
     padding: 0;
     font-family: var(--font-body);
     background-color: var(--bg-color);
     color: var(--text-color);
-    display: flex;
+    display: flex; /* Priyanshu, isse hum layout ko aasaani se control (columns/rows main) kar sakte hain */
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Screen ki puri height cover karega */
 }
 
+/* Priyanshu, header ke box shadow se usme ek 3D look aayega thoda utha hua lagega. */
 header {
     background-color: var(--panel-bg);
     padding: 1.5rem 2rem;
@@ -29,6 +33,7 @@ header {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
+/* Priyanshu, yeh heading ka gradient effect banane ke liye hai. (Text pe rang-biranga effect) */
 header h1 {
     font-family: var(--font-heading);
     margin: 0;
@@ -36,12 +41,12 @@ header h1 {
     background: linear-gradient(90deg, #58a6ff, #bc8cff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; /* Hover karne par jo smooth animation aayegi, uski timing yahan hai */
     cursor: default;
 }
 
 header h1:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px); /* Priyanshu, mouse upar laane se heading halki si upar shift hogi. */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,16 +56,17 @@ h1, h2, h3, h4, h5, h6 {
 
 main {
     display: flex;
-    flex: 1;
+    flex: 1; /* Main section bachi hui puri space le lega. */
     overflow: hidden;
 }
 
+/* Priyanshu, yahan bars visualize honge, flex: 3 ka matlab yeh panel zada jagah lega (75% approx) */
 #visualization-area {
     flex: 3;
     padding: 2rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Center main align karega elements ko horizontal */
+    align-items: center; /* Center main align karega vertical */
     position: relative;
 }
 
@@ -68,21 +74,23 @@ main {
     font-size: 1.5rem;
     color: #8b949e;
     opacity: 0.7;
-    animation: pulse 2s infinite;
+    animation: pulse 2s infinite; /* Priyanshu, yeh text dhire dhire blink/pulse karega */
 }
 
+/* Priyanshu, yeh animation ka keyframe hai, kaise text ki opacity change hogi 0 se 100% tak. */
 @keyframes pulse {
     0% { opacity: 0.4; }
     50% { opacity: 0.8; }
     100% { opacity: 0.4; }
 }
 
+/* Priyanshu, Code panel ke liye styling flex: 1 (visualization wale se chhota hoga, approx 25%) */
 #code-panel {
     flex: 1;
     background-color: var(--panel-bg);
     border-left: 1px solid var(--border-color);
     padding: 1.5rem;
-    overflow-y: auto;
+    overflow-y: auto; /* Agar code bada hoga, toh scrollbar aa jayega */
     box-shadow: -4px 0 15px rgba(0,0,0,0.2);
 }
 
@@ -94,12 +102,13 @@ main {
     padding-bottom: 0.5rem;
 }
 
+/* Priyanshu, yahan code ka font size aur background theek kar rahe hain highlight.js ke default ke upar. */
 #code-panel pre {
     font-family: var(--font-code);
     font-size: 0.95rem;
     border-radius: 8px;
     padding: 1.2rem;
-    background-color: #0d1117 !important; /* override highlight.js default if needed */
+    background-color: #0d1117 !important;
     border: 1px solid var(--border-color);
     overflow-x: auto;
 }
