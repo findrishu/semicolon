@@ -31,6 +31,9 @@ header {
     padding: 1.5rem 2rem;
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    display: flex; /* Priyanshu, isse title aur buttons ek line mein aayenge */
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* Priyanshu, yeh heading ka gradient effect banane ke liye hai. (Text pe rang-biranga effect) */
@@ -47,6 +50,33 @@ header h1 {
 
 header h1:hover {
     transform: translateY(-2px); /* Priyanshu, mouse upar laane se heading halki si upar shift hogi. */
+}
+
+/* Priyanshu, Button styles yahan add kar rahe hain */
+.controls {
+    display: flex;
+    gap: 1rem; /* Buttons ke beech ka gap */
+}
+
+button {
+    font-family: var(--font-body);
+    background-color: var(--primary-accent);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #3b82f6; /* Hover karne pe thoda dark color hoga */
+}
+
+button:active {
+    transform: scale(0.95); /* Click karne pe halka sa chota (press down effect) hoga */
 }
 
 h1, h2, h3, h4, h5, h6 {

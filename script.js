@@ -12,5 +12,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Console mein F12 daba ke dekhoge toh ye text likha hua dikhega.
     console.log("DSA Visualizer connected successfully. Hello Priyanshu!");
     
+    // Priyanshu, aaj jo buttons add kiye hain HTML mein, unhe yahan Javascript mein dhundh rahe hain
+    const generateBtn = document.getElementById('generate-btn');
+    const playBtn = document.getElementById('play-btn');
+
+    // Priyanshu, jab koi "Generate Array" button pe click karega toh yeh code chalega
+    generateBtn.addEventListener('click', () => {
+        console.log("Generate Array Button Clicked!");
+        alert("Priyanshu, Generate Array logic yahan aayega!");
+    });
+
+    // Priyanshu, jab koi "Play" button pe click karega toh yeh code chalega
+    playBtn.addEventListener('click', () => {
+        console.log("Play Button Clicked!");
+        alert("Priyanshu, Animation Play karne ka logic yahan aayega!");
+    });
+
     // Priyanshu, aage chal ke array banana, swap karna aur sorting animations yahan likhi jayengi!
 });
