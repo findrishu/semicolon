@@ -15,7 +15,7 @@ Here is a simple breakdown of what each file in this project does:
 *   **`style.css`**: The makeup of our web app. It makes everything look beautiful. It contains colors (like our sleek dark mode), fonts, layout instructions, and smooth animations.
 *   **`script.js`**: The brain of our web app. This file contains the JavaScript code that actually runs the algorithms, controls the animations, and connects the user interface with the logic.
 *   **`TECH_STACK.md`**: A document that lists all the technologies we are using (HTML, CSS, JS, etc.) and explains *why* we chose them.
-*   **`01-project-architecture.md` / `02-git-workflow.md` / `03-sorting-flowchart.md` / `04-datastructure-flowchart.md`**: These are documentation and planning files that help developers understand how the project is organized, how to contribute to it using Git, and the logic flowcharts.
+*   **`01-project-architecture.md` / `02-git-workflow.md` / `03-app-workflow.md`**: These are documentation and planning files that help developers understand how the project is organized, how to contribute to it using Git, and the application's step-by-step logic workflow.
 
 ## 💻 How to Run
 1. Simply clone this repository.
