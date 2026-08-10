@@ -1,29 +1,91 @@
 # semicolon;
 
+> **Code. Learn. Build. Repeat.**
+
 Welcome to **semicolon;** — a collaborative space where ideas become code!
 
-## 🚀 About the Project (DSA Visualizer)
-This specific project inside our repository is a **Data Structures and Algorithms (DSA) Visualizer**. 
-In simple words, it is a web application that helps you see how different algorithms (like sorting) and data structures work step-by-step through animations. It makes learning DSA much easier and more interactive by showing you exactly what happens under the hood instead of just reading boring text!
+---
 
-The basic idea is to build an interactive site where you can actually learn DSA basics, ideas, how things actually work in DSA. It's basically for students who are learning DSA for the first time or from scratch. Anyone who learns better by seeing concepts rather than just reading code.
+## 🚀 About the Project
 
-## 📂 Project Files Explained
-Here is a simple breakdown of what each file in this project does:
+**DSA Visualizer** is an interactive web application that helps you *see* how sorting algorithms and data structures work — step by step, through animations.
 
-*   **`index.html`**: The skeleton of our web app. This is the main file you open in your browser. It contains the basic structure (like the header, the visualization area, and the code panel).
-*   **`style.css`**: The makeup of our web app. It makes everything look beautiful. It contains colors (like our sleek dark mode), fonts, layout instructions, and smooth animations.
-*   **`script.js`**: The brain of our web app. This file contains the JavaScript code that actually runs the algorithms, controls the animations, and connects the user interface with the logic.
-*   **`TECH_STACK.md`**: A document that lists all the technologies we are using (HTML, CSS, JS, etc.) and explains *why* we chose them.
-*   **`01-project-architecture.md` / `02-git-workflow.md` / `03-app-workflow.md`**: These are documentation and planning files that help developers understand how the project is organized, how to contribute to it using Git, and the application's step-by-step logic workflow.
+Instead of just reading dry theory, you can watch bars swap, highlight, and sort themselves in real-time. Built for students learning DSA for the first time or anyone who learns better by *seeing* concepts in action.
+
+### ✨ Key Features
+
+- 🎨 **Dark-mode UI** with a sleek gradient header and smooth micro-animations
+- 📊 **Visualization area** — watch sorting algorithms animate bar-by-bar
+- 💻 **Reference code panel** — syntax-highlighted C code displayed alongside the animation
+- 🔘 **Generate Array** and **Play** controls to drive the visualizer
+- ⚡ **Zero build step** — just open `index.html` in a browser and go
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technology | Purpose |
+|---|---|---|
+| **Structure** | HTML5 | Semantic markup |
+| **Styling** | CSS3 | Dark theme, animations, responsive layout |
+| **Logic** | Vanilla JavaScript | Algorithm logic, DOM manipulation, animation control |
+| **Code Highlighting** | highlight.js (CDN) | Syntax coloring for C reference snippets |
+| **Fonts** | Google Fonts | Poppins, Inter, Fira Code, JetBrains Mono |
+| **Version Control** | Git + GitHub | Collaboration, PRs, branching |
+| **Hosting** | GitHub Pages | Free static deployment |
+
+> No frameworks, no build tools, no npm — by design. See [TECH_STACK.md](TECH_STACK.md) for the reasoning.
+
+---
+
+## 📂 Project Structure
+
+```
+DSA Visualisation Project/
+├── index.html                  # Main HTML — open this in your browser
+├── style.css                   # Dark-mode design system & animations
+├── script.js                   # Algorithm logic & UI event handlers
+├── README.md                   # You are here
+├── TECH_STACK.md               # Why we chose each technology
+├── 01-project-architecture.md  # How the project is organized
+├── 02-git-workflow.md          # Git branching & contribution guide
+└── 03-app-workflow.md          # Step-by-step application logic flow
+```
+
+---
 
 ## 💻 How to Run
-1. Simply clone this repository.
-2. Open the `index.html` file in any modern web browser (like Chrome, Edge, or Firefox).
-3. No server or complicated setup is required!
 
-### Our Philosophy
+```bash
+# 1. Clone the repo
+git clone https://github.com/<your-username>/DSA-Visualizer.git
 
-Code. Learn. Build. Repeat.
+# 2. Open in browser
+# Just double-click index.html — no server needed!
+```
 
-> Small commits. Big impact.
+That's it. No `npm install`, no config files, no terminal wizardry.
+
+---
+
+## 🤝 Contributing
+
+1. **Fork** the repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "Add: your feature"`
+4. Push to your branch: `git push origin feature/your-feature`
+5. Open a **Pull Request**
+
+Please read [02-git-workflow.md](02-git-workflow.md) for our branching conventions.
+
+---
+
+## 📜 License
+
+This project is open source and available for educational use.
+
+---
+
+<p align="center">
+  <b>semicolon;</b> — Small commits. Big impact.
+</p>
