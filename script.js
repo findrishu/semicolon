@@ -1,4 +1,37 @@
 
+async function bubbleSort() {
+    const bars = document.getElementsByClassName('array-bar');
+    for (let i = 0; i < array.length - 1; i++) {
+        for (let j = 0; j < array.length - i - 1; j++) {
+            bars[j].classList.add('comparing');
+            bars[j + 1].classList.add('comparing');
+            await sleep(100);
+
+            if (array[j] > array[j + 1]) {
+                bars[j].classList.add('swapping');
+                bars[j + 1].classList.add('swapping');
+                
+                // Swap data
+                let temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
+                
+                // Swap visual
+                await swap(bars[j], bars[j + 1]);
+                await sleep(100);
+                
+                bars[j].classList.remove('swapping');
+                bars[j + 1].classList.remove('swapping');
+            }
+            
+            bars[j].classList.remove('comparing');
+            bars[j + 1].classList.remove('comparing');
+        }
+        bars[array.length - 1 - i].classList.add('sorted');
+    }
+    bars[0].classList.add('sorted');
+}
+
 // Helper functions for animation
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
