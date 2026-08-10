@@ -1,3 +1,13 @@
+// State variables
+let array = [];
+const ARRAY_SIZE = 20;
+
+function generateRandomArray() {
+    array = [];
+    for (let i = 0; i < ARRAY_SIZE; i++) {
+        array.push(Math.floor(Math.random() * 80) + 10);
+    }
+}
 // Priyanshu, jab pura HTML load ho jata hai browser mein, tab yeh line ke andar ka code chalta hai.
 // Taaki JavaScript kisi element ko dhunde toh error na aaye kyuki element pehle hi load ho chuka hai.
 document.addEventListener('DOMContentLoaded', (event) => {
