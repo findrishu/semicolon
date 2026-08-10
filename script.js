@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // highlight.js chalati hai taaki keywords ko colors mil jayein (syntax highlighting).
     document.querySelectorAll('pre code').forEach((el) => {
         hljs.highlightElement(el);
-    });
+        generateRandomArray();
+    renderArray();
+});
 
     // Priyanshu, yeh line check karne ke liye hai ki file sahi se link hui hai ya nahi.
     // Console mein F12 daba ke dekhoge toh ye text likha hua dikhega.
@@ -25,18 +27,36 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Priyanshu, aaj jo buttons add kiye hain HTML mein, unhe yahan Javascript mein dhundh rahe hain
     const generateBtn = document.getElementById('generate-btn');
     const playBtn = document.getElementById('play-btn');
+    const visualizationArea = document.getElementById('visualization-area');
+
+    function renderArray() {
+        visualizationArea.innerHTML = '';
+        for (let i = 0; i < array.length; i++) {
+            const bar = document.createElement('div');
+            bar.classList.add('array-bar');
+            bar.style.height = `${array[i] * 3}px`;
+            visualizationArea.appendChild(bar);
+        }
+    }
+
 
     // Priyanshu, jab koi "Generate Array" button pe click karega toh yeh code chalega
     generateBtn.addEventListener('click', () => {
-        console.log("Generate Array Button Clicked!");
-        alert("Priyanshu, Generate Array logic yahan aayega!");
-    });
+        generateRandomArray();
+        renderArray();
+        generateRandomArray();
+    renderArray();
+});
 
     // Priyanshu, jab koi "Play" button pe click karega toh yeh code chalega
     playBtn.addEventListener('click', () => {
         console.log("Play Button Clicked!");
         alert("Priyanshu, Animation Play karne ka logic yahan aayega!");
-    });
+        generateRandomArray();
+    renderArray();
+});
 
     // Priyanshu, aage chal ke array banana, swap karna aur sorting animations yahan likhi jayengi!
+    generateRandomArray();
+    renderArray();
 });
