@@ -1,3 +1,12 @@
+
+// Helper functions for animation
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+async function swap(el1, el2) {
+    const temp = el1.style.height;
+    el1.style.height = el2.style.height;
+    el2.style.height = temp;
+}
 // State variables
 let array = [];
 const ARRAY_SIZE = 20;
