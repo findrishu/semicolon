@@ -10,6 +10,8 @@ This file is maintained by the AI Assistant to track the daily progress of the D
 3. **Bar Rendering**: Dynamically appending `div` elements to the DOM based on array size.
 4. **Animation Helpers**: Added `sleep` and `swap` functions with visual delays.
 5. **Bubble Sort**: Fully implemented with active comparison and swapping visual states.
+6. **Selection Sort**: Implemented with minimum selection logic and swapping.
+7. **Controls**: Added speed and size sliders, and an algorithm selector.
 
 ### File Structure
 - `index.html`: Main skeleton and controls structure.
@@ -21,14 +23,14 @@ This file is maintained by the AI Assistant to track the daily progress of the D
 ## 🟡 Next Steps / Upcoming Features (To-Do List)
 
 1. **Add More Algorithms**:
-   - [ ] Selection Sort
+   - [x] Selection Sort
    - [ ] Insertion Sort
    - [ ] Merge Sort
    - [ ] Quick Sort
-2. **Speed Controls**: Add a slider to control the animation delay (currently hardcoded to `100ms`).
-3. **Size Controls**: Add a slider to change the size of the array.
+2. **Speed Controls**: [x] Add a slider to control the animation delay.
+3. **Size Controls**: [x] Add a slider to change the size of the array.
 4. **Code Highlighting Sync**: Highlight the respective C/C++ code line when the algorithm executes a specific step.
-5. **Algorithm Selection**: Add a dropdown or buttons to choose which sorting algorithm to visualize.
+5. **Algorithm Selection**: [x] Add a dropdown or buttons to choose which sorting algorithm to visualize.
 
 ---
 
