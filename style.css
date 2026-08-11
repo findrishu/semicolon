@@ -55,7 +55,31 @@ header h1:hover {
 /* Priyanshu, Button styles yahan add kar rahe hain */
 .controls {
     display: flex;
-    gap: 1rem; /* Buttons ke beech ka gap */
+    align-items: center;
+    gap: 1rem; /* Controls ke beech ka gap */
+}
+
+.slider-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+select {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type="range"] {
+    cursor: pointer;
 }
 
 button {
