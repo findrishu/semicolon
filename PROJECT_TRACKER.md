@@ -24,7 +24,7 @@ This file is maintained by the AI Assistant to track the daily progress of the D
 
 1. **Add More Algorithms**:
    - [x] Selection Sort
-   - [ ] Insertion Sort
+   - [x] Insertion Sort
    - [ ] Merge Sort
    - [ ] Quick Sort
 2. **Speed Controls**: [x] Add a slider to control the animation delay.

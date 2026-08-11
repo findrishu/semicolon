@@ -110,6 +110,42 @@ async function selectionSort() {
     }
 }
 
+// Priyanshu, yeh Insertion Sort ka logic hai
+async function insertionSort() {
+    const bars = document.getElementsByClassName('array-bar');
+    // Pehle element ko sorted maan lete hain, isliye i = 1 se shuru karenge
+    for (let i = 1; i < array.length; i++) {
+        let key = array[i];
+        let keyHeight = bars[i].style.height;
+        let j = i - 1;
+        
+        bars[i].classList.add('swapping'); // Highlight the element to be inserted
+        await sleep(getDelay());
+
+        while (j >= 0 && array[j] > key) {
+            bars[j].classList.add('comparing');
+            await sleep(getDelay());
+            
+            array[j + 1] = array[j];
+            bars[j + 1].style.height = bars[j].style.height;
+            
+            bars[j].classList.remove('comparing');
+            j = j - 1;
+        }
+        array[j + 1] = key;
+        bars[j + 1].style.height = keyHeight;
+        
+        // Remove swapping class
+        for (let k = 0; k <= i; k++) {
+            bars[k].classList.remove('swapping');
+        }
+    }
+    // Sorting poori hone ke baad sabko green (sorted) kar denge
+    for(let k = 0; k < array.length; k++) {
+        bars[k].classList.add('sorted');
+    }
+}
+
 // Priyanshu, jab pura HTML load ho jata hai browser mein, tab yeh line ke andar ka code chalta hai.
 document.addEventListener('DOMContentLoaded', (event) => {
     
@@ -166,6 +202,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             await bubbleSort();
         } else if (selectedAlgo === 'selection') {
             await selectionSort();
+        } else if (selectedAlgo === 'insertion') {
+            await insertionSort();
         }
         
         // Sorting poori ho gayi, ab controls wapis enable kar do
