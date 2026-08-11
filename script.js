@@ -1,6 +1,12 @@
 // State variables
 let array = [];
-const ARRAY_SIZE = 20;
+
+// Priyanshu, ab hum delay ko slider se control karenge
+function getDelay() {
+    const speedSlider = document.getElementById('speed-slider');
+    const speed = speedSlider ? parseInt(speedSlider.value) : 100;
+    return 1010 - speed; // High speed value = Low delay
+}
 
 // Priyanshu, yeh helper functions hain jo animation mein delay aur swap laane ke kaam aayenge
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -14,7 +20,9 @@ async function swap(el1, el2) {
 // Priyanshu, yeh function naya array banata hai random numbers (10 se 90) ke sath
 function generateRandomArray() {
     array = [];
-    for (let i = 0; i < ARRAY_SIZE; i++) {
+    const sizeSlider = document.getElementById('size-slider');
+    const arraySize = sizeSlider ? parseInt(sizeSlider.value) : 20;
+    for (let i = 0; i < arraySize; i++) {
         array.push(Math.floor(Math.random() * 80) + 10);
     }
 }
@@ -27,7 +35,7 @@ async function bubbleSort() {
             // Priyanshu, yahan hum 2 bars ko compare karne ke liye yellow (comparing) class add kar rahe hain
             bars[j].classList.add('comparing');
             bars[j + 1].classList.add('comparing');
-            await sleep(100);
+            await sleep(getDelay());
 
             if (array[j] > array[j + 1]) {
                 // Priyanshu, agar pehla bar bada hai toh red (swapping) class laga ke height swap karenge
@@ -41,7 +49,7 @@ async function bubbleSort() {
                 
                 // Swap visual bars on screen
                 await swap(bars[j], bars[j + 1]);
-                await sleep(100);
+                await sleep(getDelay());
                 
                 bars[j].classList.remove('swapping');
                 bars[j + 1].classList.remove('swapping');
@@ -57,6 +65,51 @@ async function bubbleSort() {
     bars[0].classList.add('sorted');
 }
 
+// Priyanshu, yeh Selection Sort ka logic hai
+async function selectionSort() {
+    const bars = document.getElementsByClassName('array-bar');
+    for (let i = 0; i < array.length; i++) {
+        let minIdx = i;
+        bars[i].classList.add('comparing');
+        await sleep(getDelay());
+
+        for (let j = i + 1; j < array.length; j++) {
+            bars[j].classList.add('comparing');
+            await sleep(getDelay());
+
+            if (array[j] < array[minIdx]) {
+                if (minIdx !== i) {
+                    bars[minIdx].classList.remove('swapping'); // Purana minimum hataya
+                }
+                minIdx = j;
+                bars[minIdx].classList.add('swapping'); // Naya minimum (red)
+            }
+            
+            if (j !== minIdx) {
+                bars[j].classList.remove('comparing');
+            }
+        }
+
+        if (minIdx !== i) {
+            bars[i].classList.add('swapping');
+            
+            // Swap data logic
+            let temp = array[i];
+            array[i] = array[minIdx];
+            array[minIdx] = temp;
+            
+            await swap(bars[i], bars[minIdx]);
+            await sleep(getDelay());
+            
+            bars[minIdx].classList.remove('swapping');
+        }
+        
+        bars[i].classList.remove('comparing');
+        bars[i].classList.remove('swapping');
+        bars[i].classList.add('sorted');
+    }
+}
+
 // Priyanshu, jab pura HTML load ho jata hai browser mein, tab yeh line ke andar ka code chalta hai.
 document.addEventListener('DOMContentLoaded', (event) => {
     
@@ -68,10 +121,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     console.log("DSA Visualizer connected successfully. Hello Priyanshu!");
     
-    // Priyanshu, HTML mein jo buttons hain, unhe hum yahan Javascript mein variable bana rahe hain
+    // Priyanshu, HTML mein jo elements hain, unhe hum yahan Javascript mein variable bana rahe hain
     const generateBtn = document.getElementById('generate-btn');
     const playBtn = document.getElementById('play-btn');
     const visualizationArea = document.getElementById('visualization-area');
+    const sizeSlider = document.getElementById('size-slider');
+    const speedSlider = document.getElementById('speed-slider');
+    const algorithmSelect = document.getElementById('algorithm-select');
+
+    // Jab size slider move ho toh array turant update hona chahiye
+    sizeSlider.addEventListener('input', () => {
+        generateRandomArray();
+        renderArray();
+    });
 
     // Priyanshu, yeh function numbers ko screen par vertical bars ki tarah draw karta hai
     function renderArray() {
@@ -90,17 +152,28 @@ document.addEventListener('DOMContentLoaded', (event) => {
         renderArray();
     });
 
-    // Priyanshu, jab koi "Play" button pe click karega toh Bubble Sort start hoga
+    // Priyanshu, jab koi "Play" button pe click karega toh sorting start hogi
     playBtn.addEventListener('click', async () => {
-        // Play click hote hi buttons disable kar do taaki beech mein koi disturb na kare
+        // Play click hote hi controls disable kar do taaki beech mein koi disturb na kare
         playBtn.disabled = true;
         generateBtn.disabled = true;
+        sizeSlider.disabled = true;
+        speedSlider.disabled = true;
+        algorithmSelect.disabled = true;
         
-        await bubbleSort();
+        const selectedAlgo = algorithmSelect.value;
+        if (selectedAlgo === 'bubble') {
+            await bubbleSort();
+        } else if (selectedAlgo === 'selection') {
+            await selectionSort();
+        }
         
-        // Sorting poori ho gayi, ab buttons wapis enable kar do
+        // Sorting poori ho gayi, ab controls wapis enable kar do
         playBtn.disabled = false;
         generateBtn.disabled = false;
+        sizeSlider.disabled = false;
+        speedSlider.disabled = false;
+        algorithmSelect.disabled = false;
     });
 
     // Priyanshu, page load hote hi pehli baar ek array apne aap ban jaye aur dikhe
