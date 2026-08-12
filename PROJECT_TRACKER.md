@@ -29,7 +29,7 @@ This file is maintained by the AI Assistant to track the daily progress of the D
    - [x] Quick Sort
 2. **Speed Controls**: [x] Add a slider to control the animation delay.
 3. **Size Controls**: [x] Add a slider to change the size of the array.
-4. **Code Highlighting Sync**: Highlight the respective C/C++ code line when the algorithm executes a specific step.
+4. **Code Highlighting Sync**: [x] Highlight the respective C/C++ code line when the algorithm executes a specific step.
 5. **Algorithm Selection**: [x] Add a dropdown or buttons to choose which sorting algorithm to visualize.
 
 ---
