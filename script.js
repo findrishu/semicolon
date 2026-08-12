@@ -1,6 +1,93 @@
 // State variables
 let array = [];
 
+const algoCodes = {
+    'bubble': [
+        "void bubbleSort(int arr[], int n) {",
+        "    for (int i = 0; i < n-1; i++) {",
+        "        for (int j = 0; j < n-i-1; j++) {",
+        "            if (arr[j] > arr[j+1]) {",
+        "                swap(&arr[j], &arr[j+1]);",
+        "            }",
+        "        }",
+        "    }",
+        "}"
+    ],
+    'selection': [
+        "void selectionSort(int arr[], int n) {",
+        "    for (int i = 0; i < n-1; i++) {",
+        "        int min_idx = i;",
+        "        for (int j = i+1; j < n; j++) {",
+        "            if (arr[j] < arr[min_idx])",
+        "                min_idx = j;",
+        "        }",
+        "        swap(&arr[min_idx], &arr[i]);",
+        "    }",
+        "}"
+    ],
+    'insertion': [
+        "void insertionSort(int arr[], int n) {",
+        "    for (int i = 1; i < n; i++) {",
+        "        int key = arr[i];",
+        "        int j = i - 1;",
+        "        while (j >= 0 && arr[j] > key) {",
+        "            arr[j + 1] = arr[j];",
+        "            j = j - 1;",
+        "        }",
+        "        arr[j + 1] = key;",
+        "    }",
+        "}"
+    ],
+    'merge': [
+        "// Merge Sort implementation",
+        "void mergeSort(int arr[], int l, int r) {",
+        "    if (l < r) {",
+        "        int m = l + (r - l) / 2;",
+        "        mergeSort(arr, l, m);",
+        "        mergeSort(arr, m + 1, r);",
+        "        merge(arr, l, m, r);",
+        "    }",
+        "}"
+    ],
+    'quick': [
+        "// Quick Sort implementation",
+        "void quickSort(int arr[], int low, int high) {",
+        "    if (low < high) {",
+        "        int pi = partition(arr, low, high);",
+        "        quickSort(arr, low, pi - 1);",
+        "        quickSort(arr, pi + 1, high);",
+        "    }",
+        "}"
+    ]
+};
+
+function renderCode(algo) {
+    const codeLines = algoCodes[algo] || ["// Code not found"];
+    const container = document.getElementById('reference-code-container');
+    if (!container) return;
+    container.innerHTML = '';
+    codeLines.forEach((line, idx) => {
+        const div = document.createElement('div');
+        div.id = `code-line-${idx}`;
+        div.className = "code-line";
+        const codeEl = document.createElement('code');
+        codeEl.className = "language-c";
+        codeEl.textContent = line || " ";
+        hljs.highlightElement(codeEl);
+        div.appendChild(codeEl);
+        container.appendChild(div);
+    });
+}
+
+function setActiveLine(idx) {
+    document.querySelectorAll('.code-line').forEach(el => el.classList.remove('active'));
+    if (idx !== null && idx !== undefined) {
+        const line = document.getElementById(`code-line-${idx}`);
+        if (line) line.classList.add('active');
+        if (line) line.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
 // Priyanshu, ab hum delay ko slider se control karenge
 function getDelay() {
     const speedSlider = document.getElementById('speed-slider');
@@ -29,15 +116,21 @@ function generateRandomArray() {
 
 // Priyanshu, yeh function Bubble Sort algorithm ka logic hai jo bars ko height ke hisaab se sort karega
 async function bubbleSort() {
+    setActiveLine(0);
     const bars = document.getElementsByClassName('array-bar');
     for (let i = 0; i < array.length - 1; i++) {
+        setActiveLine(1);
+        await sleep(getDelay()/2);
         for (let j = 0; j < array.length - i - 1; j++) {
+            setActiveLine(2);
             // Priyanshu, yahan hum 2 bars ko compare karne ke liye yellow (comparing) class add kar rahe hain
             bars[j].classList.add('comparing');
             bars[j + 1].classList.add('comparing');
             await sleep(getDelay());
 
+            setActiveLine(3);
             if (array[j] > array[j + 1]) {
+                setActiveLine(4);
                 // Priyanshu, agar pehla bar bada hai toh red (swapping) class laga ke height swap karenge
                 bars[j].classList.add('swapping');
                 bars[j + 1].classList.add('swapping');
@@ -63,6 +156,7 @@ async function bubbleSort() {
     }
     // Priyanshu, sabse pehla bar bach gaya, toh wo bhi sorted hi hoga!
     bars[0].classList.add('sorted');
+    setActiveLine(null);
 }
 
 // Priyanshu, yeh Selection Sort ka logic hai
@@ -280,11 +374,14 @@ async function partition(start, end) {
 // Priyanshu, jab pura HTML load ho jata hai browser mein, tab yeh line ke andar ka code chalta hai.
 document.addEventListener('DOMContentLoaded', (event) => {
     
-    // Priyanshu, yeh line 'pre' aur 'code' tags ke block ko html mein dhundti hai aur uspe 
-    // highlight.js chalati hai taaki keywords ko colors mil jayein (syntax highlighting).
-    document.querySelectorAll('pre code').forEach((el) => {
-        hljs.highlightElement(el);
-    });
+    // Priyanshu, code block render aur highlight karne ke liye hum function use karenge.
+    const algorithmSelect = document.getElementById('algorithm-select');
+    if (algorithmSelect) {
+        renderCode(algorithmSelect.value);
+        algorithmSelect.addEventListener('change', () => {
+            renderCode(algorithmSelect.value);
+        });
+    }
 
     console.log("DSA Visualizer connected successfully. Hello Priyanshu!");
     
