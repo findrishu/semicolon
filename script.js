@@ -161,17 +161,23 @@ async function bubbleSort() {
 
 // Priyanshu, yeh Selection Sort ka logic hai
 async function selectionSort() {
+    setActiveLine(0);
     const bars = document.getElementsByClassName('array-bar');
     for (let i = 0; i < array.length; i++) {
+        setActiveLine(1);
         let minIdx = i;
+        setActiveLine(2);
         bars[i].classList.add('comparing');
         await sleep(getDelay());
 
         for (let j = i + 1; j < array.length; j++) {
+            setActiveLine(3);
             bars[j].classList.add('comparing');
             await sleep(getDelay());
 
+            setActiveLine(4);
             if (array[j] < array[minIdx]) {
+                setActiveLine(5);
                 if (minIdx !== i) {
                     bars[minIdx].classList.remove('swapping'); // Purana minimum hataya
                 }
@@ -185,6 +191,7 @@ async function selectionSort() {
         }
 
         if (minIdx !== i) {
+            setActiveLine(7);
             bars[i].classList.add('swapping');
             
             // Swap data logic
@@ -202,30 +209,39 @@ async function selectionSort() {
         bars[i].classList.remove('swapping');
         bars[i].classList.add('sorted');
     }
+    setActiveLine(null);
 }
 
 // Priyanshu, yeh Insertion Sort ka logic hai
 async function insertionSort() {
+    setActiveLine(0);
     const bars = document.getElementsByClassName('array-bar');
     // Pehle element ko sorted maan lete hain, isliye i = 1 se shuru karenge
     for (let i = 1; i < array.length; i++) {
+        setActiveLine(1);
         let key = array[i];
         let keyHeight = bars[i].style.height;
         let j = i - 1;
+        setActiveLine(2);
+        setActiveLine(3);
         
         bars[i].classList.add('swapping'); // Highlight the element to be inserted
         await sleep(getDelay());
 
         while (j >= 0 && array[j] > key) {
+            setActiveLine(4);
             bars[j].classList.add('comparing');
             await sleep(getDelay());
             
+            setActiveLine(5);
             array[j + 1] = array[j];
             bars[j + 1].style.height = bars[j].style.height;
             
+            setActiveLine(6);
             bars[j].classList.remove('comparing');
             j = j - 1;
         }
+        setActiveLine(8);
         array[j + 1] = key;
         bars[j + 1].style.height = keyHeight;
         
@@ -238,6 +254,7 @@ async function insertionSort() {
     for(let k = 0; k < array.length; k++) {
         bars[k].classList.add('sorted');
     }
+    setActiveLine(null);
 }
 
 // Priyanshu, yeh Merge Sort ka logic hai
@@ -247,13 +264,21 @@ async function mergeSort() {
     for (let k = 0; k < array.length; k++) {
         bars[k].classList.add('sorted');
     }
+    setActiveLine(null);
 }
 
 async function mergeSortHelper(start, end) {
+    setActiveLine(1);
     if (start >= end) return;
+    setActiveLine(2);
     const mid = Math.floor((start + end) / 2);
+    setActiveLine(3);
+    await sleep(getDelay()/2);
+    setActiveLine(4);
     await mergeSortHelper(start, mid);
+    setActiveLine(5);
     await mergeSortHelper(mid + 1, end);
+    setActiveLine(6);
     await merge(start, mid, end);
 }
 
@@ -310,12 +335,19 @@ async function quickSort() {
     for (let k = 0; k < array.length; k++) {
         bars[k].classList.add('sorted');
     }
+    setActiveLine(null);
 }
 
 async function quickSortHelper(start, end) {
+    setActiveLine(1);
     if (start < end) {
+        setActiveLine(2);
         let pivotIndex = await partition(start, end);
+        setActiveLine(3);
+        await sleep(getDelay()/2);
+        setActiveLine(4);
         await quickSortHelper(start, pivotIndex - 1);
+        setActiveLine(5);
         await quickSortHelper(pivotIndex + 1, end);
     }
 }
