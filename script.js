@@ -146,6 +146,137 @@ async function insertionSort() {
     }
 }
 
+// Priyanshu, yeh Merge Sort ka logic hai
+async function mergeSort() {
+    await mergeSortHelper(0, array.length - 1);
+    const bars = document.getElementsByClassName('array-bar');
+    for (let k = 0; k < array.length; k++) {
+        bars[k].classList.add('sorted');
+    }
+}
+
+async function mergeSortHelper(start, end) {
+    if (start >= end) return;
+    const mid = Math.floor((start + end) / 2);
+    await mergeSortHelper(start, mid);
+    await mergeSortHelper(mid + 1, end);
+    await merge(start, mid, end);
+}
+
+async function merge(start, mid, end) {
+    const bars = document.getElementsByClassName('array-bar');
+    let start2 = mid + 1;
+
+    if (array[mid] <= array[start2]) {
+        return;
+    }
+
+    while (start <= mid && start2 <= end) {
+        bars[start].classList.add('comparing');
+        bars[start2].classList.add('comparing');
+        await sleep(getDelay());
+        
+        if (array[start] <= array[start2]) {
+            bars[start].classList.remove('comparing');
+            bars[start2].classList.remove('comparing');
+            start++;
+        }
+        else {
+            let value = array[start2];
+            let index = start2;
+
+            bars[start].classList.add('swapping');
+            bars[index].classList.add('swapping');
+            await sleep(getDelay());
+
+            while (index !== start) {
+                array[index] = array[index - 1];
+                bars[index].style.height = bars[index - 1].style.height;
+                index--;
+            }
+            array[start] = value;
+            bars[start].style.height = `${value * 3}px`;
+
+            bars[start].classList.remove('swapping');
+            bars[start2].classList.remove('swapping');
+            bars[start].classList.remove('comparing');
+            bars[start2].classList.remove('comparing');
+
+            start++;
+            mid++;
+            start2++;
+        }
+    }
+}
+
+// Priyanshu, yeh Quick Sort ka logic hai
+async function quickSort() {
+    await quickSortHelper(0, array.length - 1);
+    const bars = document.getElementsByClassName('array-bar');
+    for (let k = 0; k < array.length; k++) {
+        bars[k].classList.add('sorted');
+    }
+}
+
+async function quickSortHelper(start, end) {
+    if (start < end) {
+        let pivotIndex = await partition(start, end);
+        await quickSortHelper(start, pivotIndex - 1);
+        await quickSortHelper(pivotIndex + 1, end);
+    }
+}
+
+async function partition(start, end) {
+    const bars = document.getElementsByClassName('array-bar');
+    let pivot = array[end];
+    bars[end].classList.add('comparing');
+    
+    let i = start - 1;
+
+    for (let j = start; j <= end - 1; j++) {
+        bars[j].classList.add('comparing');
+        await sleep(getDelay());
+
+        if (array[j] < pivot) {
+            i++;
+            if (i !== j) {
+                bars[i].classList.add('swapping');
+                bars[j].classList.add('swapping');
+                
+                let temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+
+                await swap(bars[i], bars[j]);
+                await sleep(getDelay());
+                
+                bars[i].classList.remove('swapping');
+                bars[j].classList.remove('swapping');
+            }
+        }
+        bars[j].classList.remove('comparing');
+    }
+    
+    i++;
+    if (i !== end) {
+        bars[i].classList.add('swapping');
+        bars[end].classList.add('swapping');
+
+        let temp = array[i];
+        array[i] = array[end];
+        array[end] = temp;
+
+        await swap(bars[i], bars[end]);
+        await sleep(getDelay());
+
+        bars[i].classList.remove('swapping');
+        bars[end].classList.remove('swapping');
+    }
+    bars[end].classList.remove('comparing');
+    
+    return i;
+}
+
 // Priyanshu, jab pura HTML load ho jata hai browser mein, tab yeh line ke andar ka code chalta hai.
 document.addEventListener('DOMContentLoaded', (event) => {
     
@@ -204,7 +335,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             await selectionSort();
         } else if (selectedAlgo === 'insertion') {
             await insertionSort();
+        } else if (selectedAlgo === 'merge') {
+            await mergeSort();
+        } else if (selectedAlgo === 'quick') {
+            await quickSort();
         }
+
         
         // Sorting poori ho gayi, ab controls wapis enable kar do
         playBtn.disabled = false;
