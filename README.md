@@ -8,15 +8,15 @@ Welcome to **semicolon;** — a collaborative space where ideas become code!
 
 ## 🚀 About the Project
 
-**DSA Visualizer** is an interactive web application that helps you *see* how sorting algorithms and data structures work — step by step, through animations.
+**DSA Visualizer** is an interactive web application that helps you *see* how sorting algorithms work — step by step, through animations.
 
-Instead of just reading dry theory, you can watch bars swap, highlight, and sort themselves in real-time. Built for students learning DSA for the first time or anyone who learns better by *seeing* concepts in action.
+Instead of reading dry theory, you can watch bars swap, highlight, and sort themselves in real time. Built for students learning DSA for the first time or anyone who learns better by *seeing* concepts in action.
 
 ### ✨ Key Features
 
-- 🎨 **Dark-mode UI** with a sleek gradient header and smooth micro-animations
+- 🎨 **Dark-mode UI** with a sleek gradient header and smooth animations
 - 📊 **Visualization area** — watch sorting algorithms animate bar-by-bar
-- 💻 **Reference code panel** — syntax-highlighted C code displayed alongside the animation
+- 💻 **Reference code panel** — syntax-highlighted C code shown alongside the animation
 - 🔘 **Generate Array** and **Play** controls to drive the visualizer
 - ⚡ **Zero build step** — just open `index.html` in a browser and go
 
@@ -46,11 +46,33 @@ DSA Visualisation Project/
 ├── style.css                   # Dark-mode design system & animations
 ├── script.js                   # Algorithm logic & UI event handlers
 ├── README.md                   # You are here
+├── COLLEGE_REPORT.md           # Formal project progress report
 ├── TECH_STACK.md               # Why we chose each technology
-├── 01-project-architecture.md  # How the project is organized
+├── PROJECT_TRACKER.md          # Feature completion tracker
+├── 01-project-architecture.md  # How the project files connect
 ├── 02-git-workflow.md          # Git branching & contribution guide
-└── 03-app-workflow.md          # Step-by-step application logic flow
+└── 03-app-workflow.md          # Step-by-step application flow
 ```
+
+---
+
+## 🔄 How It Works
+
+```mermaid
+flowchart LR
+    A["🎲 Generate Array"] --> B["▶️ Click Play"]
+    B --> C["⚙️ Algorithm Sorts Step by Step"]
+    C --> D["🟢 Sorted!"]
+
+    style A fill:#6366f1,color:#fff
+    style C fill:#eab308,color:#000
+    style D fill:#22c55e,color:#000
+```
+
+1. Click **Generate Array** — random bars appear on screen
+2. Select an algorithm (Bubble, Selection, Insertion, Merge, or Quick Sort)
+3. Click **Play** — watch the bars compare (yellow), swap (red), and settle (green)
+4. The C code panel highlights the matching line at each step
 
 ---
 
@@ -58,7 +80,7 @@ DSA Visualisation Project/
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/<your-username>/DSA-Visualizer.git
+git clone https://github.com/findrishu/semicolon.git
 
 # 2. Open in browser
 # Just double-click index.html — no server needed!

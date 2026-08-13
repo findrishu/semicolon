@@ -1,66 +1,55 @@
 # Git Workflow — DSA Visualizer
 
+This document explains how we use Git and GitHub to manage code changes in this project.
+
 ## Branch Strategy
+
+We use a simple branching model: `main` is the stable branch, and each new feature gets its own branch.
 
 ```mermaid
 gitGraph
     commit id: "initial setup"
-    branch feature/landing-page
-    checkout feature/landing-page
-    commit id: "navbar + branding"
-    checkout main
-    merge feature/landing-page
-
     branch feature/sorting
     checkout feature/sorting
     commit id: "bubble sort"
-    commit id: "merge/quick sort"
-
-    checkout main
-    branch feature/linkedlist
-    checkout feature/linkedlist
-    commit id: "linked list ops"
-
+    commit id: "selection sort"
+    commit id: "insertion sort"
+    commit id: "merge + quick sort"
     checkout main
     merge feature/sorting
-    merge feature/linkedlist
-
-    branch feature/tree
-    checkout feature/tree
-    commit id: "BST + traversal"
-    checkout main
-    merge feature/tree
-
-    commit id: "final polish + deploy"
+    commit id: "code highlighting"
+    commit id: "project report"
 ```
 
-## Day-to-Day Flow (what each person actually does)
+## Daily Workflow (Step by Step)
+
+This is what each team member does when they sit down to code:
 
 ```mermaid
 flowchart TD
-    A["Start of session"] --> B["git checkout main<br/>git pull origin main"]
-    B --> C["git checkout -b feature/xyz<br/>(or switch to existing branch)"]
-    C --> D["Write code for your module"]
-    D --> E["Test locally in browser"]
+    A["🟣 Start Working"] --> B["Pull latest code from GitHub"]
+    B --> C["Create a new branch for your feature"]
+    C --> D["Write code"]
+    D --> E["Test in browser"]
     E --> F{"Working?"}
-    F -->|No| D
-    F -->|Yes| G["git add .<br/>git commit -m 'feat: ...'"]
-    G --> H["git push origin feature/xyz"]
-    H --> I["Open Pull Request on GitHub"]
-    I --> J["Teammate reviews PR"]
+    F -- "No" --> D
+    F -- "Yes" --> G["Commit your changes"]
+    G --> H["Push branch to GitHub"]
+    H --> I["Open a Pull Request"]
+    I --> J["Teammate reviews it"]
     J --> K{"Approved?"}
-    K -->|Changes needed| D
-    K -->|Yes| L["Merge into main"]
-    L --> M["Update MEMORY.md<br/>(what was done, what's next)"]
-    M --> N["End of session"]
+    K -- "No, needs changes" --> D
+    K -- "Yes" --> L["Merge into main"]
+    L --> M["🟢 Done for the day"]
 
     style A fill:#6366f1,color:#fff
     style L fill:#22c55e,color:#000
-    style N fill:#6366f1,color:#fff
+    style M fill:#22c55e,color:#000
 ```
 
-## Rules Recap
-- Never commit directly to `main`
-- One feature = one branch = one PR
-- Always `git pull` before starting new work
-- Update `MEMORY.md` at the end of every session
+## Simple Rules
+
+- **Never push directly to `main`** — always use a feature branch
+- **One feature = one branch** — keeps things organized
+- **Always pull before starting** — avoids merge conflicts
+- **Write clear commit messages** — example: `feat: add insertion sort algorithm`

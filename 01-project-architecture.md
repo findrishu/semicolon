@@ -1,52 +1,54 @@
 # Project Architecture — DSA Visualizer
 
-This diagram shows how the pieces of the app connect to each other.
+This document shows how the different files in this project connect and work together.
+
+## How the Files Connect
 
 ```mermaid
-graph TD
-    A["index.html<br/>(Landing Page)"] --> B["main.js<br/>(Navbar + Shared Utils)"]
+flowchart TD
+    A["🌐 index.html"]
+    B["🎨 style.css"]
+    C["⚙️ script.js"]
+    D["📦 highlight.js (CDN)"]
+    E["🔤 Google Fonts (CDN)"]
 
-    A --> C["Sorting Module"]
-    A --> D["Stack/Queue Module"]
-    A --> E["Linked List Module"]
-    A --> F["Tree Module"]
-    A --> G["Graph Module (stretch)"]
-
-    C --> C1["sorting.html"]
-    C --> C2["sorting.js"]
-    C2 --> H["State Array Generator<br/>(records every step)"]
-
-    D --> D1["stack-queue.html"]
-    D --> D2["stack-queue.js"]
-    D2 --> H
-
-    E --> E1["linkedlist.html"]
-    E --> E2["linkedlist.js"]
-    E2 --> H
-
-    F --> F1["tree.html"]
-    F --> F2["tree.js"]
-    F2 --> H
-
-    H --> I["Animation Engine<br/>(setInterval / requestAnimationFrame)"]
-    I --> J["Visualization Area<br/>(bars / nodes / boxes)"]
-    I --> K["C Code Panel<br/>(renderCodePanel function)"]
-
-    K --> L["/c-code/*.c<br/>(static reference snippets)"]
-
-    J --> M["Playback Controls<br/>(Play / Pause / Step / Speed)"]
-    K --> M
+    A -- "loads styles from" --> B
+    A -- "loads logic from" --> C
+    A -- "loads library" --> D
+    A -- "loads fonts" --> E
+    C -- "reads user input from" --> A
+    C -- "updates bars & code panel in" --> A
+    D -- "colors the C code in" --> A
 
     style A fill:#6366f1,color:#fff
-    style H fill:#eab308,color:#000
-    style I fill:#22c55e,color:#000
-    style K fill:#3b82f6,color:#fff
+    style B fill:#ec4899,color:#fff
+    style C fill:#eab308,color:#000
+    style D fill:#22c55e,color:#000
+    style E fill:#3b82f6,color:#fff
 ```
 
-## Key Idea
-Every module (Sorting, Linked List, Tree, etc.) follows the **same core pattern**:
-1. Take input → generate a **state array** (list of "snapshots" of every step)
-2. Feed the state array into the shared **Animation Engine**
-3. Animation Engine updates both the **Visualization Area** and the **C Code Panel** in sync
+## What Each File Does
 
-This is why building the C Code Panel once (shared component) and reusing it everywhere saves a lot of duplicate work.
+| File | Role |
+|---|---|
+| `index.html` | The main page — has the buttons, sliders, visualization area, and code panel |
+| `style.css` | Controls how everything looks — dark theme, bar colors, animations |
+| `script.js` | The brain — generates arrays, runs sorting algorithms, animates the bars |
+
+## The Core Pattern
+
+Every sorting algorithm in this project follows the same 3-step pattern:
+
+```mermaid
+flowchart LR
+    A["1️⃣ Generate Array"] --> B["2️⃣ Run Algorithm"]
+    B --> C["3️⃣ Animate Each Step"]
+
+    style A fill:#6366f1,color:#fff
+    style B fill:#eab308,color:#000
+    style C fill:#22c55e,color:#000
+```
+
+1. **Generate** — Create a random array and draw it as bars on screen
+2. **Run** — Execute the sorting algorithm step by step
+3. **Animate** — At each step, change bar colors and heights so the user can see what's happening

@@ -1,33 +1,51 @@
 # Application Workflow — DSA Visualizer
 
-This document outlines the high-level functional workflow of the Data Structures and Algorithms Visualizer. It provides a simple and professional step-by-step breakdown of how the application processes user inputs, executes algorithms, and renders animations.
+This document explains how the application works from start to finish, in plain English.
 
-## 1. Initialization and Setup
-* **Application Load**: The browser loads the core structure (`index.html`), styling (`style.css`), and operational logic (`script.js`).
-* **Dependency Loading**: Syntax highlighting libraries and fonts are initialized.
-* **State Reset**: The application sets up empty arrays or default data structures ready for user interaction.
+## Complete User Flow
 
-## 2. User Input & Configuration
-* **Data Generation**: The user chooses to generate a new dataset (e.g., a random array of numbers) or enters custom data.
-* **Algorithm Selection**: The user selects the desired algorithm (e.g., Bubble Sort, Merge Sort, etc.) from the control panel.
-* **Speed Configuration**: The user optionally adjusts the playback speed of the upcoming animation.
+```mermaid
+flowchart TD
+    A["🌐 User opens index.html in browser"] --> B["📦 Page loads: HTML, CSS, JS, Fonts, highlight.js"]
+    B --> C["🎲 A default random array is generated and shown as bars"]
+    C --> D["🎛️ User adjusts settings"]
 
-## 3. Algorithm Execution & State Capture
-* **Pre-computation**: Instead of animating during the actual algorithm execution, JavaScript runs the selected algorithm entirely in the background.
-* **State Recording**: At every critical step (such as a comparison, a swap, or an insertion), the application captures a "snapshot" (state) of the data structure.
-* **Completion**: Once the algorithm completes its sorting or data manipulation, a chronological array of states is finalized. 
+    D --> D1["📏 Size slider → changes number of bars"]
+    D --> D2["⚡ Speed slider → changes animation speed"]
+    D --> D3["📋 Dropdown → selects sorting algorithm"]
 
-## 4. Animation Rendering
-* **Playback Initiation**: The user clicks the "Play" button.
-* **Sequential Rendering**: The application loops through the recorded states array using a timing function (`setInterval` or `requestAnimationFrame`).
-* **UI Updates**: 
-  * The height/position of bars in the visualization area are updated.
-  * Colors are changed dynamically to indicate actions:
-    * **Yellow**: Elements being compared.
-    * **Red**: Elements being swapped.
-    * **Green**: Elements in their final, sorted position.
-* **Code Highlighting**: Concurrently, the relevant line of C/C++ code in the side panel is highlighted to map the visual action to actual code logic.
+    D1 --> E["▶️ User clicks Play"]
+    D2 --> E
+    D3 --> E
 
-## 5. Completion & Post-execution
-* **Final State**: Once all states have been rendered, the entire visualization area signals completion (e.g., all bars turn green).
-* **Reset**: The system readies itself for a new generation or a different algorithm selection, ensuring a smooth repetitive learning loop without requiring a page refresh.
+    E --> F["🔒 All controls get disabled during sorting"]
+    F --> G["⚙️ Selected algorithm starts running"]
+
+    G --> H["🟡 Comparing: two bars turn yellow"]
+    H --> I{"Need to swap?"}
+    I -- "Yes" --> J["🔴 Swapping: bars turn red and swap heights"]
+    I -- "No" --> K["Move to next pair"]
+    J --> K
+    K --> L{"Sorting done?"}
+    L -- "No" --> H
+    L -- "Yes" --> M["🟢 All bars turn green — sorted!"]
+
+    M --> N["🔓 Controls re-enabled"]
+    N --> O["🔁 User can generate new array and run again"]
+
+    style A fill:#6366f1,color:#fff
+    style M fill:#22c55e,color:#000
+    style O fill:#6366f1,color:#fff
+```
+
+## What the Colors Mean
+
+| Color | Meaning |
+|---|---|
+| 🟡 **Yellow** | These two bars are being compared right now |
+| 🔴 **Red** | These bars are being swapped |
+| 🟢 **Green** | This bar is in its final sorted position |
+
+## Code Panel (Side Panel)
+
+While the bars are animating, the C language reference code on the right side highlights the exact line that matches the current step. This helps connect the visual animation with actual code logic.

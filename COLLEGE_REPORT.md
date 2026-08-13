@@ -89,30 +89,24 @@ DSA Visualisation Project/
 
 ### 4.2 Application Workflow
 
-```
-User opens index.html in browser
-        │
-        ▼
-  Page loads → Default array generated and rendered as bars
-        │
-        ▼
-  User adjusts size/speed sliders, selects algorithm
-        │
-        ▼
-  User clicks "Play"
-        │
-        ▼
-  Controls disabled → Selected algorithm executes
-        │
-        ▼
-  Each step: bars change color (yellow = comparing, red = swapping)
-  + corresponding C code line highlighted in side panel
-        │
-        ▼
-  Sorting complete → All bars turn green (sorted)
-        │
-        ▼
-  Controls re-enabled → User can generate new array or run again
+```mermaid
+flowchart TD
+    A["🌐 User opens index.html"] --> B["Page loads and default array appears as bars"]
+    B --> C["🎛️ User adjusts sliders and selects algorithm"]
+    C --> D["▶️ User clicks Play"]
+    D --> E["🔒 Controls disabled"]
+    E --> F["⚙️ Algorithm runs step by step"]
+    F --> G["🟡 Bars turn yellow when comparing"]
+    G --> H["🔴 Bars turn red when swapping"]
+    H --> I["💻 C code line highlights in side panel"]
+    I --> J{"Sorting done?"}
+    J -- "No" --> G
+    J -- "Yes" --> K["🟢 All bars turn green — sorted!"]
+    K --> L["🔓 Controls re-enabled — run again"]
+
+    style A fill:#6366f1,color:#fff
+    style K fill:#22c55e,color:#000
+    style L fill:#6366f1,color:#fff
 ```
 
 ---

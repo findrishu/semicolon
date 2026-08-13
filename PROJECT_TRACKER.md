@@ -1,38 +1,48 @@
-# DSA Visualizer - Project Tracker
+# DSA Visualizer — Project Tracker
 
-This file is maintained by the AI Assistant to track the daily progress of the DSA Visualizer project. It ensures context is preserved across different chat sessions.
+This file tracks the development progress of the DSA Visualizer project.
 
-## 🟢 Current State (Last Updated: 10 Aug 2026)
-
-### Implemented Features
-1. **Basic UI/UX Setup**: Dark mode styling with CSS variables.
-2. **Array Generation**: Logic to generate an array of random heights.
-3. **Bar Rendering**: Dynamically appending `div` elements to the DOM based on array size.
-4. **Animation Helpers**: Added `sleep` and `swap` functions with visual delays.
-5. **Bubble Sort**: Fully implemented with active comparison and swapping visual states.
-6. **Selection Sort**: Implemented with minimum selection logic and swapping.
-7. **Controls**: Added speed and size sliders, and an algorithm selector.
-
-### File Structure
-- `index.html`: Main skeleton and controls structure.
-- `style.css`: All styling, color variables, and animation transitions (`.comparing`, `.swapping`, `.sorted`).
-- `script.js`: Array state management and algorithm execution.
+**Last Updated:** 13 August 2026
 
 ---
 
-## 🟡 Next Steps / Upcoming Features (To-Do List)
+## ✅ Completed
 
-1. **Add More Algorithms**:
-   - [x] Selection Sort
-   - [x] Insertion Sort
-   - [x] Merge Sort
-   - [x] Quick Sort
-2. **Speed Controls**: [x] Add a slider to control the animation delay.
-3. **Size Controls**: [x] Add a slider to change the size of the array.
-4. **Code Highlighting Sync**: [x] Highlight the respective C/C++ code line when the algorithm executes a specific step.
-5. **Algorithm Selection**: [x] Add a dropdown or buttons to choose which sorting algorithm to visualize.
+| # | Feature | Details |
+|---|---|---|
+| 1 | UI/UX Setup | Dark-mode interface with CSS variables and gradient header |
+| 2 | Array Generation | Random array of configurable size |
+| 3 | Bar Rendering | Dynamic vertical bars drawn from array values |
+| 4 | Animation Helpers | `sleep()` and `swap()` functions with async delays |
+| 5 | Bubble Sort | Comparison + swap animations with color states |
+| 6 | Selection Sort | Minimum-tracking with visual highlighting |
+| 7 | Insertion Sort | Key-based shifting animation |
+| 8 | Merge Sort | Recursive divide-and-merge with in-place visual shifts |
+| 9 | Quick Sort | Partition-based sorting with pivot highlight |
+| 10 | Speed Slider | Controls animation delay |
+| 11 | Size Slider | Controls number of bars |
+| 12 | Algorithm Dropdown | Select which sorting algorithm to visualize |
+| 13 | Code Sync Panel | C reference code highlights line-by-line during execution |
+| 14 | Control Locking | UI controls disabled while sorting runs |
 
 ---
 
-## 💡 Note for AI Assistant
-*When the user starts a new session, read this file to understand the current context and continue from the 'Next Steps' section. Always commit changes incrementally to maintain a rich, professional git history.*
+## 🔲 Planned (Future)
+
+| # | Feature | Details |
+|---|---|---|
+| 1 | Data Structure Visualizations | Linked List, Stack, Queue, Tree traversals |
+| 2 | Complexity Display | Show Big-O time/space for each algorithm |
+| 3 | Step Counter | Count comparisons and swaps |
+| 4 | Mobile Layout | Responsive design for smaller screens |
+| 5 | GitHub Pages | Deploy live site |
+
+---
+
+## 📁 File Structure
+
+| File | Purpose |
+|---|---|
+| `index.html` | Main page — controls, visualization area, code panel |
+| `style.css` | Dark theme, animations, transitions |
+| `script.js` | Algorithm logic, array state, event handlers |
