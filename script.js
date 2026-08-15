@@ -1,5 +1,15 @@
 // State variables
 let array = [];
+const ARRAY_SIZE = 20;
+
+function generateRandomArray() {
+    array = [];
+    for (let i = 0; i < ARRAY_SIZE; i++) {
+        array.push(Math.floor(Math.random() * 80) + 10);
+    }
+}
+// State variables
+let array = [];
 
 const algoCodes = {
     'bubble': [
