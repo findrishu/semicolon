@@ -86,7 +86,9 @@ function renderCode(algo) {
         hljs.highlightElement(codeEl);
         div.appendChild(codeEl);
         container.appendChild(div);
-    });
+        generateRandomArray();
+    renderArray();
+});
 }
 
 function setActiveLine(idx) {
@@ -94,7 +96,9 @@ function setActiveLine(idx) {
     if (idx !== null && idx !== undefined) {
         const line = document.getElementById(`code-line-${idx}`);
         if (line) line.classList.add('active');
-        if (line) line.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (line) line.scrollIntoView({ behavior: 'smooth', block: 'center'     generateRandomArray();
+    renderArray();
+});
     }
 }
 
@@ -422,7 +426,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         renderCode(algorithmSelect.value);
         algorithmSelect.addEventListener('change', () => {
             renderCode(algorithmSelect.value);
-        });
+            generateRandomArray();
+    renderArray();
+});
     }
 
     console.log("DSA Visualizer connected successfully. Hello Priyanshu!");
@@ -430,6 +436,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Priyanshu, HTML mein jo elements hain, unhe hum yahan Javascript mein variable bana rahe hain
     const generateBtn = document.getElementById('generate-btn');
     const playBtn = document.getElementById('play-btn');
+    const visualizationArea = document.getElementById('visualization-area');
+
+    function renderArray() {
+        visualizationArea.innerHTML = '';
+        for (let i = 0; i < array.length; i++) {
+            const bar = document.createElement('div');
+            bar.classList.add('array-bar');
+            bar.style.height = `${array[i] * 3}px`;
+            visualizationArea.appendChild(bar);
+        }
+    }
+
     const visualizationArea = document.getElementById('visualization-area');
     const sizeSlider = document.getElementById('size-slider');
     const speedSlider = document.getElementById('speed-slider');
@@ -439,7 +457,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     sizeSlider.addEventListener('input', () => {
         generateRandomArray();
         renderArray();
-    });
+        generateRandomArray();
+    renderArray();
+});
 
     // Priyanshu, yeh function numbers ko screen par vertical bars ki tarah draw karta hai
     function renderArray() {
@@ -456,7 +476,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     generateBtn.addEventListener('click', () => {
         generateRandomArray();
         renderArray();
-    });
+        generateRandomArray();
+    renderArray();
+});
 
     // Priyanshu, jab koi "Play" button pe click karega toh sorting start hogi
     playBtn.addEventListener('click', async () => {
@@ -487,9 +509,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
         sizeSlider.disabled = false;
         speedSlider.disabled = false;
         algorithmSelect.disabled = false;
-    });
+        generateRandomArray();
+    renderArray();
+});
 
     // Priyanshu, page load hote hi pehli baar ek array apne aap ban jaye aur dikhe
+    generateRandomArray();
+    renderArray();
     generateRandomArray();
     renderArray();
 });
