@@ -197,3 +197,21 @@ main {
 .array-bar.sorted {
     background-color: #2ea043;
 }
+
+/* Added for bar visualization */
+.array-bar {
+    width: 20px;
+    background-color: var(--primary-accent);
+    margin: 0 2px;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.2s ease, background-color 0.2s ease;
+}
+.array-bar.comparing {
+    background-color: #f1e05a;
+}
+.array-bar.swapping {
+    background-color: #f85149;
+}
+.array-bar.sorted {
+    background-color: #2ea043;
+}
