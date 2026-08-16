@@ -2,7 +2,7 @@
 
 **Project Name:** DSA Visualizer (semicolon;)
 **Team:** Rahul, Priyanshu
-**Date:** 13 August 2026
+**Date:** 16 August 2026
 **Status:** In Progress
 
 ---
@@ -59,13 +59,13 @@ The DSA Visualizer is an interactive web-based application designed to visually 
 | Algorithm Selector | Dropdown menu to choose which sorting algorithm to run | ✅ Done |
 | Code Sync Panel | C language reference code with line-by-line highlighting during execution | ✅ Done |
 | Control Locking | UI controls disabled during sorting to prevent interference | ✅ Done |
+| Algorithm Complexity Display | Show time/space complexity (Big-O) for each algorithm | ✅ Done |
 
 ### 3.2 Pending / Planned Features 🔲
 
 | Feature | Description | Status |
 |---|---|---|
 | Data Structure Visualizations | Linked List, Stack, Queue, Tree traversals | 🔲 Not Started |
-| Algorithm Complexity Display | Show time/space complexity (Big-O) for each algorithm | 🔲 Not Started |
 | Step Counter | Display the number of comparisons and swaps performed | 🔲 Not Started |
 | Mobile Responsiveness | Optimize layout for smaller screen sizes | 🔲 Not Started |
 | GitHub Pages Deployment | Deploy the live application on GitHub Pages | 🔲 Not Started |
@@ -120,13 +120,14 @@ No installation, server, or build step is required.
 
 ---
 
-## 6. Work Log — 13 August 2026
+## 6. Work Log — 13 & 16 August 2026
 
 | Task | Details |
 |---|---|
 | Codebase Audit | Reviewed all project files and verified actual completion status of features against the project tracker |
 | Project Report | Created a formal `COLLEGE_REPORT.md` documenting project scope, tech stack, progress, architecture, and pending work |
 | Tracker Correction | Identified that `PROJECT_TRACKER.md` was outdated — all 5 sorting algorithms were already implemented but tracker showed 3 as pending |
+| Complexity Display | Implemented dynamic UI to show Big-O time and space complexity for the selected algorithm |
 
 ---
 
