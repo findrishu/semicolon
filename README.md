@@ -17,6 +17,7 @@ Instead of reading dry theory, you can watch bars swap, highlight, and sort them
 - 🎨 **Dark-mode UI** with a sleek gradient header and smooth animations
 - 📊 **Visualization area** — watch sorting algorithms animate bar-by-bar
 - 💻 **Reference code panel** — syntax-highlighted C code shown alongside the animation
+- ⏱️ **Complexity Display** — real-time Big-O time and space complexity
 - 🔘 **Generate Array** and **Play** controls to drive the visualizer
 - ⚡ **Zero build step** — just open `index.html` in a browser and go
 
