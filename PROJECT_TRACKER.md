@@ -2,7 +2,7 @@
 
 This file tracks the development progress of the DSA Visualizer project.
 
-**Last Updated:** 13 August 2026
+**Last Updated:** 16 August 2026
 
 ---
 
@@ -24,6 +24,7 @@ This file tracks the development progress of the DSA Visualizer project.
 | 12 | Algorithm Dropdown | Select which sorting algorithm to visualize |
 | 13 | Code Sync Panel | C reference code highlights line-by-line during execution |
 | 14 | Control Locking | UI controls disabled while sorting runs |
+| 15 | Complexity Display | Show Big-O time/space for each algorithm |
 
 ---
 
@@ -32,8 +33,7 @@ This file tracks the development progress of the DSA Visualizer project.
 | # | Feature | Details |
 |---|---|---|
 | 1 | Data Structure Visualizations | Linked List, Stack, Queue, Tree traversals |
-| 2 | Complexity Display | Show Big-O time/space for each algorithm |
-| 3 | Step Counter | Count comparisons and swaps |
+| 2 | Step Counter | Count comparisons and swaps |
 | 4 | Mobile Layout | Responsive design for smaller screens |
 | 5 | GitHub Pages | Deploy live site |
 

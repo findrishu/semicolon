@@ -1,58 +1,3 @@
-
-async function bubbleSort() {
-    const bars = document.getElementsByClassName('array-bar');
-    for (let i = 0; i < array.length - 1; i++) {
-        for (let j = 0; j < array.length - i - 1; j++) {
-            bars[j].classList.add('comparing');
-            bars[j + 1].classList.add('comparing');
-            await sleep(100);
-
-            if (array[j] > array[j + 1]) {
-                bars[j].classList.add('swapping');
-                bars[j + 1].classList.add('swapping');
-                
-                // Swap data
-                let temp = array[j];
-                array[j] = array[j+1];
-                array[j+1] = temp;
-                
-                // Swap visual
-                await swap(bars[j], bars[j + 1]);
-                await sleep(100);
-                
-                bars[j].classList.remove('swapping');
-                bars[j + 1].classList.remove('swapping');
-            }
-            
-            bars[j].classList.remove('comparing');
-            bars[j + 1].classList.remove('comparing');
-        }
-        bars[array.length - 1 - i].classList.add('sorted');
-    }
-    bars[0].classList.add('sorted');
-}
-
-// Helper functions for animation
-const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-async function swap(el1, el2) {
-    const temp = el1.style.height;
-    el1.style.height = el2.style.height;
-    el2.style.height = temp;
-}
-// State variables
-let array = [];
-const ARRAY_SIZE = 20;
-
-function generateRandomArray() {
-    array = [];
-    for (let i = 0; i < ARRAY_SIZE; i++) {
-        array.push(Math.floor(Math.random() * 80) + 10);
-    }
-}
-// State variables
-let array = [];
-
 const algoCodes = {
     'bubble': [
         "void bubbleSort(int arr[], int n) {",
@@ -128,9 +73,7 @@ function renderCode(algo) {
         hljs.highlightElement(codeEl);
         div.appendChild(codeEl);
         container.appendChild(div);
-        generateRandomArray();
-    renderArray();
-});
+    });
 }
 
 function setActiveLine(idx) {
@@ -138,9 +81,7 @@ function setActiveLine(idx) {
     if (idx !== null && idx !== undefined) {
         const line = document.getElementById(`code-line-${idx}`);
         if (line) line.classList.add('active');
-        if (line) line.scrollIntoView({ behavior: 'smooth', block: 'center'     generateRandomArray();
-    renderArray();
-});
+        if (line) line.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 }
 
@@ -459,6 +400,22 @@ async function partition(start, end) {
     return i;
 }
 
+const algoComplexities = {
+    'bubble': { time: 'O(n²)', space: 'O(1)' },
+    'selection': { time: 'O(n²)', space: 'O(1)' },
+    'insertion': { time: 'O(n²)', space: 'O(1)' },
+    'merge': { time: 'O(n log n)', space: 'O(n)' },
+    'quick': { time: 'O(n log n)', space: 'O(log n)' }
+};
+
+function renderComplexity(algo) {
+    const complexity = algoComplexities[algo] || { time: '-', space: '-' };
+    const timeEl = document.getElementById('time-complexity');
+    const spaceEl = document.getElementById('space-complexity');
+    if (timeEl) timeEl.textContent = complexity.time;
+    if (spaceEl) spaceEl.textContent = complexity.space;
+}
+
 // Priyanshu, jab pura HTML load ho jata hai browser mein, tab yeh line ke andar ka code chalta hai.
 document.addEventListener('DOMContentLoaded', (event) => {
     
@@ -466,11 +423,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const algorithmSelect = document.getElementById('algorithm-select');
     if (algorithmSelect) {
         renderCode(algorithmSelect.value);
+        renderComplexity(algorithmSelect.value);
         algorithmSelect.addEventListener('change', () => {
             renderCode(algorithmSelect.value);
+            renderComplexity(algorithmSelect.value);
             generateRandomArray();
-    renderArray();
-});
+            renderArray();
+        });
     }
 
     console.log("DSA Visualizer connected successfully. Hello Priyanshu!");
@@ -499,9 +458,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     sizeSlider.addEventListener('input', () => {
         generateRandomArray();
         renderArray();
-        generateRandomArray();
-    renderArray();
-});
+    });
 
     // Priyanshu, yeh function numbers ko screen par vertical bars ki tarah draw karta hai
     function renderArray() {
@@ -518,9 +475,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     generateBtn.addEventListener('click', () => {
         generateRandomArray();
         renderArray();
-        generateRandomArray();
-    renderArray();
-});
+    });
 
     // Priyanshu, jab koi "Play" button pe click karega toh sorting start hogi
     playBtn.addEventListener('click', async () => {
@@ -551,13 +506,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         sizeSlider.disabled = false;
         speedSlider.disabled = false;
         algorithmSelect.disabled = false;
-        generateRandomArray();
-    renderArray();
-});
+    });
 
     // Priyanshu, page load hote hi pehli baar ek array apne aap ban jaye aur dikhe
-    generateRandomArray();
-    renderArray();
     generateRandomArray();
     renderArray();
 });
