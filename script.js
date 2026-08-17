@@ -55,6 +55,47 @@ const algoCodes = {
         "        quickSort(arr, pi + 1, high);",
         "    }",
         "}"
+    ],
+    'stack': [
+        "// Stack operations",
+        "void push(int val) {",
+        "    stack[++top] = val;",
+        "}",
+        "int pop() {",
+        "    return stack[top--];",
+        "}"
+    ],
+    'queue': [
+        "// Queue operations",
+        "void enqueue(int val) {",
+        "    queue[rear++] = val;",
+        "}",
+        "int dequeue() {",
+        "    return queue[front++];",
+        "}"
+    ],
+    'linkedlist': [
+        "// Linked List insert",
+        "void insertEnd(Node** head, int val) {",
+        "    Node* new_node = createNode(val);",
+        "    if (*head == NULL) *head = new_node;",
+        "    else {",
+        "        Node* last = *head;",
+        "        while (last->next != NULL)",
+        "            last = last->next;",
+        "        last->next = new_node;",
+        "    }",
+        "}"
+    ],
+    'tree': [
+        "// Tree Inorder Traversal",
+        "void inorder(Node* root) {",
+        "    if (root != NULL) {",
+        "        inorder(root->left);",
+        "        print(root->data);",
+        "        inorder(root->right);",
+        "    }",
+        "}"
     ]
 };
 
@@ -400,12 +441,167 @@ async function partition(start, end) {
     return i;
 }
 
+// Data Structure Animations
+async function animateStack() {
+    setActiveLine(0);
+    const vizArea = document.getElementById('visualization-area');
+    vizArea.innerHTML = '';
+    vizArea.style.display = 'flex';
+    vizArea.style.flexDirection = 'column-reverse';
+    vizArea.style.alignItems = 'center';
+    vizArea.style.justifyContent = 'flex-start';
+    vizArea.style.paddingTop = '20px';
+
+    for (let i = 0; i < 5; i++) {
+        setActiveLine(1);
+        const val = Math.floor(Math.random() * 80) + 10;
+        const box = document.createElement('div');
+        box.className = 'ds-box';
+        box.textContent = val;
+        vizArea.appendChild(box);
+        box.classList.add('comparing');
+        await sleep(getDelay());
+        box.classList.remove('comparing');
+    }
+    await sleep(getDelay());
+    for (let i = 0; i < 5; i++) {
+        setActiveLine(4);
+        const boxes = document.getElementsByClassName('ds-box');
+        if (boxes.length > 0) {
+            boxes[boxes.length - 1].classList.add('swapping');
+            await sleep(getDelay());
+            vizArea.removeChild(boxes[boxes.length - 1]);
+        }
+    }
+    setActiveLine(null);
+    vizArea.style = '';
+}
+
+async function animateQueue() {
+    setActiveLine(0);
+    const vizArea = document.getElementById('visualization-area');
+    vizArea.innerHTML = '';
+    vizArea.style.display = 'flex';
+    vizArea.style.flexDirection = 'row';
+    vizArea.style.alignItems = 'center';
+    vizArea.style.justifyContent = 'center';
+
+    for (let i = 0; i < 5; i++) {
+        setActiveLine(1);
+        const val = Math.floor(Math.random() * 80) + 10;
+        const box = document.createElement('div');
+        box.className = 'ds-box';
+        box.textContent = val;
+        vizArea.appendChild(box);
+        box.classList.add('comparing');
+        await sleep(getDelay());
+        box.classList.remove('comparing');
+    }
+    await sleep(getDelay());
+    for (let i = 0; i < 5; i++) {
+        setActiveLine(4);
+        const boxes = document.getElementsByClassName('ds-box');
+        if (boxes.length > 0) {
+            boxes[0].classList.add('swapping');
+            await sleep(getDelay());
+            vizArea.removeChild(boxes[0]);
+        }
+    }
+    setActiveLine(null);
+    vizArea.style = '';
+}
+
+async function animateLinkedList() {
+    setActiveLine(0);
+    const vizArea = document.getElementById('visualization-area');
+    vizArea.innerHTML = '';
+    vizArea.style.display = 'flex';
+    vizArea.style.flexDirection = 'row';
+    vizArea.style.alignItems = 'center';
+    vizArea.style.justifyContent = 'center';
+
+    for (let i = 0; i < 4; i++) {
+        const val = Math.floor(Math.random() * 80) + 10;
+        const node = document.createElement('div');
+        node.className = 'ds-node';
+        node.textContent = val;
+        vizArea.appendChild(node);
+        if (i < 3) {
+            const arrow = document.createElement('div');
+            arrow.className = 'ds-arrow';
+            arrow.textContent = '→';
+            vizArea.appendChild(arrow);
+        }
+    }
+    await sleep(getDelay());
+
+    setActiveLine(1);
+    const nodes = document.getElementsByClassName('ds-node');
+    for (let i = 0; i < nodes.length; i++) {
+        nodes[i].classList.add('comparing');
+        await sleep(getDelay());
+        nodes[i].classList.remove('comparing');
+    }
+    
+    setActiveLine(2);
+    const arrow = document.createElement('div');
+    arrow.className = 'ds-arrow comparing';
+    arrow.textContent = '→';
+    vizArea.appendChild(arrow);
+    const newNode = document.createElement('div');
+    newNode.className = 'ds-node swapping';
+    newNode.textContent = 'NEW';
+    vizArea.appendChild(newNode);
+    await sleep(getDelay());
+    arrow.classList.remove('comparing');
+    newNode.classList.remove('swapping');
+    setActiveLine(null);
+    vizArea.style = '';
+}
+
+async function animateTree() {
+    setActiveLine(0);
+    const vizArea = document.getElementById('visualization-area');
+    vizArea.innerHTML = '';
+    vizArea.style.display = 'flex';
+    vizArea.style.flexDirection = 'column';
+    vizArea.style.alignItems = 'center';
+    vizArea.style.justifyContent = 'center';
+    
+    const treeHTML = `
+        <div class="tree-container">
+            <div class="tree-row"><div class="ds-node" id="tn-1">1</div></div>
+            <div class="tree-row"><div class="ds-node" id="tn-2">2</div><div class="ds-node" id="tn-3">3</div></div>
+            <div class="tree-row"><div class="ds-node" id="tn-4">4</div><div class="ds-node" id="tn-5">5</div><div class="ds-node" id="tn-6">6</div><div class="ds-node" id="tn-7" style="visibility:hidden;">7</div></div>
+        </div>
+    `;
+    vizArea.innerHTML = treeHTML;
+    
+    const order = ['tn-4', 'tn-2', 'tn-5', 'tn-1', 'tn-6', 'tn-3'];
+    setActiveLine(1);
+    for (const id of order) {
+        const node = document.getElementById(id);
+        if (node) {
+            node.classList.add('comparing');
+            await sleep(getDelay());
+            node.classList.remove('comparing');
+            node.classList.add('sorted');
+        }
+    }
+    setActiveLine(null);
+    vizArea.style = '';
+}
+
 const algoComplexities = {
     'bubble': { time: 'O(n²)', space: 'O(1)' },
     'selection': { time: 'O(n²)', space: 'O(1)' },
     'insertion': { time: 'O(n²)', space: 'O(1)' },
     'merge': { time: 'O(n log n)', space: 'O(n)' },
-    'quick': { time: 'O(n log n)', space: 'O(log n)' }
+    'quick': { time: 'O(n log n)', space: 'O(log n)' },
+    'stack': { time: 'O(1)', space: 'O(n)' },
+    'queue': { time: 'O(1)', space: 'O(n)' },
+    'linkedlist': { time: 'O(n)', space: 'O(n)' },
+    'tree': { time: 'O(n)', space: 'O(n)' }
 };
 
 function renderComplexity(algo) {
@@ -437,22 +633,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Priyanshu, HTML mein jo elements hain, unhe hum yahan Javascript mein variable bana rahe hain
     const generateBtn = document.getElementById('generate-btn');
     const playBtn = document.getElementById('play-btn');
-    const visualizationArea = document.getElementById('visualization-area');
-
-    function renderArray() {
-        visualizationArea.innerHTML = '';
-        for (let i = 0; i < array.length; i++) {
-            const bar = document.createElement('div');
-            bar.classList.add('array-bar');
-            bar.style.height = `${array[i] * 3}px`;
-            visualizationArea.appendChild(bar);
-        }
-    }
-
-    const visualizationArea = document.getElementById('visualization-area');
     const sizeSlider = document.getElementById('size-slider');
     const speedSlider = document.getElementById('speed-slider');
-    const algorithmSelect = document.getElementById('algorithm-select');
 
     // Jab size slider move ho toh array turant update hona chahiye
     sizeSlider.addEventListener('input', () => {
@@ -497,6 +679,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
             await mergeSort();
         } else if (selectedAlgo === 'quick') {
             await quickSort();
+        } else if (selectedAlgo === 'stack') {
+            await animateStack();
+        } else if (selectedAlgo === 'queue') {
+            await animateQueue();
+        } else if (selectedAlgo === 'linkedlist') {
+            await animateLinkedList();
+        } else if (selectedAlgo === 'tree') {
+            await animateTree();
         }
 
         

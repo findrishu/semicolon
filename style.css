@@ -198,20 +198,55 @@ main {
     background-color: #2ea043;
 }
 
-/* Added for bar visualization */
-.array-bar {
-    width: 20px;
+/* Data Structures Styles */
+.ds-box {
+    width: 40px;
+    height: 40px;
     background-color: var(--primary-accent);
-    margin: 0 2px;
-    border-radius: 4px 4px 0 0;
-    transition: height 0.2s ease, background-color 0.2s ease;
+    margin: 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    transition: all 0.3s ease;
 }
-.array-bar.comparing {
-    background-color: #f1e05a;
+.ds-box.comparing { background-color: #f1e05a; color: #000; }
+.ds-box.swapping { background-color: #f85149; transform: scale(1.1); }
+.ds-box.sorted { background-color: #2ea043; }
+
+.ds-node {
+    width: 36px;
+    height: 36px;
+    background-color: var(--primary-accent);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 10px;
+    transition: all 0.3s ease;
 }
-.array-bar.swapping {
-    background-color: #f85149;
+.ds-node.comparing { background-color: #f1e05a; color: #000; }
+.ds-node.swapping { background-color: #f85149; transform: scale(1.1); }
+.ds-node.sorted { background-color: #2ea043; }
+
+.ds-arrow {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
 }
-.array-bar.sorted {
-    background-color: #2ea043;
+.ds-arrow.comparing { color: #f1e05a; }
+
+.tree-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.tree-row {
+    display: flex;
+    gap: 40px;
 }
