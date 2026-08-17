@@ -1,3 +1,5 @@
+let array = []; //corrected on 17 aug - declared array properly here (was an undeclared implicit global before)
+
 const algoCodes = {
     'bubble': [
         "void bubbleSort(int arr[], int n) {",
@@ -144,7 +146,7 @@ async function swap(el1, el2) {
 
 // Priyanshu, yeh function naya array banata hai random numbers (10 se 90) ke sath
 function generateRandomArray() {
-    array = [];
+    array = []; //corrected on 17 aug - now reassigns the properly declared module-level `array` instead of leaking a global
     const sizeSlider = document.getElementById('size-slider');
     const arraySize = sizeSlider ? parseInt(sizeSlider.value) : 20;
     for (let i = 0; i < arraySize; i++) {
@@ -635,6 +637,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const playBtn = document.getElementById('play-btn');
     const sizeSlider = document.getElementById('size-slider');
     const speedSlider = document.getElementById('speed-slider');
+    const visualizationArea = document.getElementById('visualization-area'); //corrected on 17 aug - this was missing, causing a ReferenceError in renderArray() and blocking the whole page
 
     // Jab size slider move ho toh array turant update hona chahiye
     sizeSlider.addEventListener('input', () => {
@@ -699,6 +702,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     // Priyanshu, page load hote hi pehli baar ek array apne aap ban jaye aur dikhe
+    //corrected on 17 aug - this now works end-to-end: visualizationArea is properly declared above,
+    //so as soon as the page loads, a random array is generated AND rendered as bars automatically
     generateRandomArray();
     renderArray();
 });
+
+//corrected 1 bug 2 more things that is mentioned 
+//added the array that shows up as soon as we get into the page.
+
+//RAHUL: ab tu isme kuch aisa add kar jo saath saath ek basic theory bhi deta rahe try to make it more understandable
+//abhi isme or topics mat add kar but explanation add kar, itll be much better.
