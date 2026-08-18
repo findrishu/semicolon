@@ -144,9 +144,23 @@ async function swap(el1, el2) {
     el2.style.height = temp;
 }
 
+let array = [];
+let comparisons = 0;
+let swaps = 0;
+
+function updateCounters() {
+    const compEl = document.getElementById('comparisons-count');
+    const swapEl = document.getElementById('swaps-count');
+    if (compEl) compEl.textContent = comparisons;
+    if (swapEl) swapEl.textContent = swaps;
+}
+
 // Priyanshu, yeh function naya array banata hai random numbers (10 se 90) ke sath
 function generateRandomArray() {
     array = []; //corrected on 17 aug - now reassigns the properly declared module-level `array` instead of leaking a global
+    comparisons = 0;
+    swaps = 0;
+    updateCounters();
     const sizeSlider = document.getElementById('size-slider');
     const arraySize = sizeSlider ? parseInt(sizeSlider.value) : 20;
     for (let i = 0; i < arraySize; i++) {
@@ -169,6 +183,7 @@ async function bubbleSort() {
             await sleep(getDelay());
 
             setActiveLine(3);
+            comparisons++; updateCounters();
             if (array[j] > array[j + 1]) {
                 setActiveLine(4);
                 // Priyanshu, agar pehla bar bada hai toh red (swapping) class laga ke height swap karenge
@@ -176,6 +191,7 @@ async function bubbleSort() {
                 bars[j + 1].classList.add('swapping');
                 
                 // Swap data logic
+                swaps++; updateCounters();
                 let temp = array[j];
                 array[j] = array[j+1];
                 array[j+1] = temp;
@@ -216,6 +232,7 @@ async function selectionSort() {
             await sleep(getDelay());
 
             setActiveLine(4);
+            comparisons++; updateCounters();
             if (array[j] < array[minIdx]) {
                 setActiveLine(5);
                 if (minIdx !== i) {
@@ -235,6 +252,7 @@ async function selectionSort() {
             bars[i].classList.add('swapping');
             
             // Swap data logic
+            swaps++; updateCounters();
             let temp = array[i];
             array[i] = array[minIdx];
             array[minIdx] = temp;
@@ -268,18 +286,24 @@ async function insertionSort() {
         bars[i].classList.add('swapping'); // Highlight the element to be inserted
         await sleep(getDelay());
 
-        while (j >= 0 && array[j] > key) {
-            setActiveLine(4);
-            bars[j].classList.add('comparing');
-            await sleep(getDelay());
-            
-            setActiveLine(5);
-            array[j + 1] = array[j];
-            bars[j + 1].style.height = bars[j].style.height;
-            
-            setActiveLine(6);
-            bars[j].classList.remove('comparing');
-            j = j - 1;
+        while (j >= 0) {
+            comparisons++; updateCounters();
+            if (array[j] > key) {
+                setActiveLine(4);
+                bars[j].classList.add('comparing');
+                await sleep(getDelay());
+                
+                setActiveLine(5);
+                swaps++; updateCounters();
+                array[j + 1] = array[j];
+                bars[j + 1].style.height = bars[j].style.height;
+                
+                setActiveLine(6);
+                bars[j].classList.remove('comparing');
+                j = j - 1;
+            } else {
+                break;
+            }
         }
         setActiveLine(8);
         array[j + 1] = key;
@@ -335,6 +359,7 @@ async function merge(start, mid, end) {
         bars[start2].classList.add('comparing');
         await sleep(getDelay());
         
+        comparisons++; updateCounters();
         if (array[start] <= array[start2]) {
             bars[start].classList.remove('comparing');
             bars[start2].classList.remove('comparing');
@@ -349,6 +374,7 @@ async function merge(start, mid, end) {
             await sleep(getDelay());
 
             while (index !== start) {
+                swaps++; updateCounters();
                 array[index] = array[index - 1];
                 bars[index].style.height = bars[index - 1].style.height;
                 index--;
@@ -403,12 +429,14 @@ async function partition(start, end) {
         bars[j].classList.add('comparing');
         await sleep(getDelay());
 
+        comparisons++; updateCounters();
         if (array[j] < pivot) {
             i++;
             if (i !== j) {
                 bars[i].classList.add('swapping');
                 bars[j].classList.add('swapping');
                 
+                swaps++; updateCounters();
                 let temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
@@ -428,6 +456,7 @@ async function partition(start, end) {
         bars[i].classList.add('swapping');
         bars[end].classList.add('swapping');
 
+        swaps++; updateCounters();
         let temp = array[i];
         array[i] = array[end];
         array[end] = temp;

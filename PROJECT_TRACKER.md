@@ -25,6 +25,9 @@ This file tracks the development progress of the DSA Visualizer project.
 | 13 | Code Sync Panel | C reference code highlights line-by-line during execution |
 | 14 | Control Locking | UI controls disabled while sorting runs |
 | 15 | Complexity Display | Show Big-O time/space for each algorithm |
+| 16 | Data Structure Visualizations | Linked List, Stack, Queue, Tree traversals |
+| 17 | Step Counter | Count comparisons and swaps |
+| 18 | Mobile Layout | Responsive design for smaller screens |
 
 ---
 
@@ -32,10 +35,7 @@ This file tracks the development progress of the DSA Visualizer project.
 
 | # | Feature | Details |
 |---|---|---|
-| 1 | Data Structure Visualizations | Linked List, Stack, Queue, Tree traversals |
-| 2 | Step Counter | Count comparisons and swaps |
-| 4 | Mobile Layout | Responsive design for smaller screens |
-| 5 | GitHub Pages | Deploy live site |
+| 1 | GitHub Pages | Deploy live site |
 
 ---
 
