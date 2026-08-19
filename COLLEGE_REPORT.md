@@ -1,7 +1,7 @@
 # DSA Visualizer — Project Progress Report
 
 **Project Name:** DSA Visualizer (semicolon;)
-**Team:** Rahul, Priyanshu
+**Team:** Rahul, Tushar
 **Date:** 16 August 2026
 **Status:** In Progress
 
