@@ -1,6 +1,6 @@
 # Application Workflow — DSA Visualizer
 
-This document explains how the application works from start to finish, in plain English.
+This document explains how the application works from start to finish, in simple English.
 
 ## Complete User Flow
 
