@@ -128,14 +128,14 @@ function setActiveLine(idx) {
     }
 }
 
-// Priyanshu, ab hum delay ko slider se control karenge
+// Tushar, we will now bind the animation delay to the slider input.
 function getDelay() {
     const speedSlider = document.getElementById('speed-slider');
     const speed = speedSlider ? parseInt(speedSlider.value) : 100;
     return 1010 - speed; // High speed value = Low delay
 }
 
-// Priyanshu, yeh helper functions hain jo animation mein delay aur swap laane ke kaam aayenge
+// Tushar, utility functions to handle asynchronous delays and DOM element swapping for animations.
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function swap(el1, el2) {
@@ -155,7 +155,7 @@ function updateCounters() {
     if (swapEl) swapEl.textContent = swaps;
 }
 
-// Priyanshu, yeh function naya array banata hai random numbers (10 se 90) ke sath
+// Tushar, this function generates a new array populated with random integers.
 function generateRandomArray() {
     array = []; //corrected on 17 aug - now reassigns the properly declared module-level `array` instead of leaking a global
     comparisons = 0;
@@ -168,7 +168,7 @@ function generateRandomArray() {
     }
 }
 
-// Priyanshu, yeh function Bubble Sort algorithm ka logic hai jo bars ko height ke hisaab se sort karega
+// Tushar, implements the Bubble Sort logic, animating bars based on their computed heights.
 async function bubbleSort() {
     setActiveLine(0);
     const bars = document.getElementsByClassName('array-bar');
@@ -177,7 +177,7 @@ async function bubbleSort() {
         await sleep(getDelay()/2);
         for (let j = 0; j < array.length - i - 1; j++) {
             setActiveLine(2);
-            // Priyanshu, yahan hum 2 bars ko compare karne ke liye yellow (comparing) class add kar rahe hain
+            // Tushar, appending the 'comparing' class (yellow) to visualize the active comparison of two elements.
             bars[j].classList.add('comparing');
             bars[j + 1].classList.add('comparing');
             await sleep(getDelay());
@@ -186,7 +186,7 @@ async function bubbleSort() {
             comparisons++; updateCounters();
             if (array[j] > array[j + 1]) {
                 setActiveLine(4);
-                // Priyanshu, agar pehla bar bada hai toh red (swapping) class laga ke height swap karenge
+                // Tushar, if the primary element is greater, append the 'swapping' class (red) and exchange their heights.
                 bars[j].classList.add('swapping');
                 bars[j + 1].classList.add('swapping');
                 
@@ -207,15 +207,15 @@ async function bubbleSort() {
             bars[j].classList.remove('comparing');
             bars[j + 1].classList.remove('comparing');
         }
-        // Priyanshu, jo bar apni sahi jagah par aa gaya use green (sorted) kar denge
+        // Tushar, mark the element as 'sorted' (green) once it reaches its final asymptotic position.
         bars[array.length - 1 - i].classList.add('sorted');
     }
-    // Priyanshu, sabse pehla bar bach gaya, toh wo bhi sorted hi hoga!
+    // Tushar, the remaining first element is inherently in its correct sorted position.
     bars[0].classList.add('sorted');
     setActiveLine(null);
 }
 
-// Priyanshu, yeh Selection Sort ka logic hai
+// Tushar, implementation of the Selection Sort algorithm.
 async function selectionSort() {
     setActiveLine(0);
     const bars = document.getElementsByClassName('array-bar');
@@ -270,7 +270,7 @@ async function selectionSort() {
     setActiveLine(null);
 }
 
-// Priyanshu, yeh Insertion Sort ka logic hai
+// Tushar, implementation of the Insertion Sort algorithm.
 async function insertionSort() {
     setActiveLine(0);
     const bars = document.getElementsByClassName('array-bar');
@@ -321,7 +321,7 @@ async function insertionSort() {
     setActiveLine(null);
 }
 
-// Priyanshu, yeh Merge Sort ka logic hai
+// Tushar, implementation of the Merge Sort algorithm.
 async function mergeSort() {
     await mergeSortHelper(0, array.length - 1);
     const bars = document.getElementsByClassName('array-bar');
@@ -394,7 +394,7 @@ async function merge(start, mid, end) {
     }
 }
 
-// Priyanshu, yeh Quick Sort ka logic hai
+// Tushar, implementation of the Quick Sort algorithm.
 async function quickSort() {
     await quickSortHelper(0, array.length - 1);
     const bars = document.getElementsByClassName('array-bar');
@@ -643,10 +643,10 @@ function renderComplexity(algo) {
     if (spaceEl) spaceEl.textContent = complexity.space;
 }
 
-// Priyanshu, jab pura HTML load ho jata hai browser mein, tab yeh line ke andar ka code chalta hai.
+// Tushar, this event listener ensures the script executes only after the DOM is fully parsed.
 document.addEventListener('DOMContentLoaded', (event) => {
     
-    // Priyanshu, code block render aur highlight karne ke liye hum function use karenge.
+    // Tushar, utilizing a function to systematically render and apply syntax highlighting to the code block.
     const algorithmSelect = document.getElementById('algorithm-select');
     if (algorithmSelect) {
         renderCode(algorithmSelect.value);
@@ -659,9 +659,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    console.log("DSA Visualizer connected successfully. Hello Priyanshu!");
+    console.log("DSA Visualizer connected successfully. Hello Tushar!");
     
-    // Priyanshu, HTML mein jo elements hain, unhe hum yahan Javascript mein variable bana rahe hain
+    // Tushar, caching DOM element references into JavaScript variables for efficient access.
     const generateBtn = document.getElementById('generate-btn');
     const playBtn = document.getElementById('play-btn');
     const sizeSlider = document.getElementById('size-slider');
@@ -674,7 +674,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         renderArray();
     });
 
-    // Priyanshu, yeh function numbers ko screen par vertical bars ki tarah draw karta hai
+    // Tushar, this function renders the numerical array as vertical DOM elements (bars) on the screen.
     function renderArray() {
         visualizationArea.innerHTML = '';
         for (let i = 0; i < array.length; i++) {
@@ -685,13 +685,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
-    // Priyanshu, jab koi "Generate Array" button pe click karega toh yeh naya array banake dikhayega
+    // Tushar, event listener to trigger the generation and rendering of a new random array.
     generateBtn.addEventListener('click', () => {
         generateRandomArray();
         renderArray();
     });
 
-    // Priyanshu, jab koi "Play" button pe click karega toh sorting start hogi
+    // Tushar, event listener to initiate the sorting sequence when the 'Play' button is activated.
     playBtn.addEventListener('click', async () => {
         // Play click hote hi controls disable kar do taaki beech mein koi disturb na kare
         playBtn.disabled = true;
@@ -730,7 +730,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         algorithmSelect.disabled = false;
     });
 
-    // Priyanshu, page load hote hi pehli baar ek array apne aap ban jaye aur dikhe
+    // Tushar, automatically generate and render an initial array upon page load.
     //corrected on 17 aug - this now works end-to-end: visualizationArea is properly declared above,
     //so as soon as the page loads, a random array is generated AND rendered as bars automatically
     generateRandomArray();

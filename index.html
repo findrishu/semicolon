@@ -2,38 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Priyanshu, yeh line ensure karti hai ki humari website mobile aur desktop dono par sahi size ki dikhe. -->
+    <!-- Tushar, this ensures the viewport is scaled correctly for both mobile and desktop devices. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Priyanshu, SEO ke liye yeh Meta Tags bohot zaroori hain. Google search mein website ko upar laane mein help karte hain. -->
+    <!-- Tushar, these meta tags are essential for SEO, improving the website's visibility on search engines. -->
     <meta name="description" content="An interactive Data Structures and Algorithms (DSA) Visualizer. Learn sorting algorithms and data structures through step-by-step animations.">
     <meta name="keywords" content="DSA, Data Structures, Algorithms, Visualizer, Sorting Algorithms, Bubble Sort, Learn Code, Interactive Learning">
     <meta name="author" content="semicolon;">
     
-    <!-- Priyanshu, yeh Open Graph tags hain, jab link WhatsApp ya social media par share karoge toh accha preview aayega. -->
+    <!-- Tushar, these Open Graph tags provide rich previews when the link is shared on social media platforms. -->
     <meta property="og:title" content="DSA Visualizer - Learn Algorithms Interactively">
     <meta property="og:description" content="Visualize sorting algorithms and data structures step-by-step with our interactive tool.">
     <meta property="og:type" content="website">
 
     <title>DSA Visualizer - Learn Algorithms Interactively</title>
     
-    <!-- Priyanshu, yahan hum Google Fonts se fancy fonts import kar rahe hain. 
+    <!-- Tushar, importing external typography from Google Fonts. 
          Yeh humari text ko sundar banayenge. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     
-    <!-- Priyanshu, yeh highlight.js ka CSS hai, jo code snippets ko rang-biranga (syntax highlight) karega. -->
+    <!-- Tushar, this CSS file from highlight.js provides syntax highlighting for the code snippets. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     
-    <!-- Priyanshu, yeh humari apni CSS file hai jahan humne website ko style kiya hai. -->
+    <!-- Tushar, this links to our primary stylesheet defining the application's visual design. -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Priyanshu, yeh humari website ka top header hai. -->
+    <!-- Tushar, this section represents the top navigation header of the application. -->
     <header>
         <h1>DSA Visualizer</h1>
-        <!-- Priyanshu, aaj humne yeh do buttons add kiye hain controls ke liye! -->
+        <!-- Tushar, added these buttons to serve as the primary execution controls. -->
         <div class="controls">
             <select id="algorithm-select">
                 <optgroup label="Sorting Algorithms">
@@ -64,7 +64,7 @@
     </header>
     
     <main>
-        <!-- Priyanshu, is section main algorithms ke bars (dande) move hote hue dikhenge, animations yahi hongi. -->
+        <!-- Tushar, this is the primary visualization canvas where the algorithmic animations will be rendered. -->
         <section id="visualization-area">
             <div class="placeholder">Algorithm Visualization Area</div>
         </section>
@@ -87,11 +87,11 @@
         </aside>
     </main>
 
-    <!-- Priyanshu, yeh script tag highlight.js ko chalata hai taaki code colors main dikhe. -->
+    <!-- Tushar, this script initializes highlight.js to apply syntax coloring to the code blocks. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
     
-    <!-- Priyanshu, yeh humari main JavaScript file hai, jisme saara logic likha hoga. -->
+    <!-- Tushar, this links to our main JavaScript file containing the application's core logic. -->
     <script src="script.js"></script>
 </body>
 </html>

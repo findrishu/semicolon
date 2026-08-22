@@ -1,136 +1,109 @@
 # DSA Visualizer — Project Progress Report
 
 **Project Name:** DSA Visualizer (semicolon;)
-**Team:** Rahul, Priyanshu
-**Date:** 16 August 2026
+**Team:** Rahul, Tushar
+**Date:** 22 August 2026
 **Status:** In Progress
 
 ---
 
-## 1. Project Overview
+## 1. Introduction and Problem Statement
 
-The DSA Visualizer is an interactive web-based application designed to visually demonstrate the working of sorting algorithms through real-time animations. Users can observe how elements are compared, swapped, and sorted step by step, alongside synchronized C language reference code. The project aims to bridge the gap between theoretical understanding and practical visualization of core Data Structures and Algorithms concepts.
+In the realm of computer science education, the comprehension of Data Structures and Algorithms (DSA) forms the fundamental bedrock for computational thinking and software engineering. However, students frequently encounter cognitive barriers when transitioning from abstract theoretical concepts to practical implementation. Traditional pedagogical methods, heavily reliant on static textbook diagrams and dry trace tables, often fail to capture the dynamic, state-changing nature of algorithmic processes.
+
+The **DSA Visualizer** (project codename: *semicolon;*) is conceptualized as an advanced pedagogical tool engineered to bridge this educational gap. It serves as an interactive, web-based platform designed to elucidate the intricate mechanics of sorting algorithms through dynamic, real-time graphical representations. By visually mapping mathematical operations—such as array traversal, element comparison, and positional swapping—to distinct visual states, the application allows users to observe algorithmic behavior in a highly intuitive manner. Furthermore, the integration of synchronized C-language reference code ensures a direct cognitive link between the visual animation and the underlying programmatic logic.
 
 ---
 
-## 2. Technology Stack
+## 2. Technological Infrastructure
 
-### 2.1 Technologies Used
+The architecture of the application is purposefully constrained to core web technologies, eschewing heavy frameworks to prioritize performance, transparency, and fundamental web development principles.
 
-| Technology | Role in Project |
+### 2.1 Core Technologies Utilized
+
+| Technology | Architectural Role |
 |---|---|
-| **HTML5** | Page structure and semantic layout |
-| **CSS3** | Styling, dark-mode theme, bar transition animations |
-| **Vanilla JavaScript** | Core algorithm logic, DOM manipulation, async animation control |
-| **highlight.js (CDN)** | Syntax highlighting for C reference code panel |
-| **Google Fonts (CDN)** | Typography — Poppins, Inter, Fira Code, JetBrains Mono |
-| **Git + GitHub** | Version control and collaborative development |
-| **GitHub Pages** | Static site hosting and deployment |
+| **HTML5** | Establishes the semantic structure and Document Object Model (DOM) hierarchy of the application interface. |
+| **CSS3** | Dictates the visual presentation through a cohesive dark-mode design system, leveraging custom properties (variables) and hardware-accelerated CSS transitions for fluid state animations. |
+| **Vanilla JavaScript** | Serves as the computational engine. It orchestrates DOM manipulation, governs the asynchronous execution flow using Promises, and implements the algorithmic logic directly. |
+| **highlight.js** | A lightweight utility integrated via CDN to provide syntax highlighting, enhancing the readability of the C reference code. |
+| **Google Fonts** | Defines the typographic hierarchy, utilizing *Poppins* and *Inter* for readability, alongside *Fira Code* for monospace code presentation. |
+| **Git & GitHub** | Facilitates version control, collaborative development, and continuous integration workflows. |
+| **GitHub Pages** | Provides a robust, zero-configuration hosting environment for static asset deployment. |
 
-### 2.2 Technologies Intentionally Not Used
+### 2.2 Rationale for Excluded Technologies
 
-| Technology | Reason for Exclusion |
-|---|---|
-| Backend (Node.js / Express / Python) | No server-side logic required; entire application runs client-side |
-| Database (MongoDB / SQL) | No data persistence needed |
-| CSS Frameworks (Bootstrap / Tailwind) | Custom design system implemented to demonstrate core CSS skills |
-| JS Frameworks (React / Angular / Vue) | Vanilla JS chosen to keep fundamentals visible and project lightweight |
-| Build Tools (npm / Webpack / Vite) | No build step required; project runs directly in the browser |
+The deliberate omission of certain modern web technologies was a strategic architectural decision:
+- **Backend Frameworks (Node.js/Python):** The computational requirements of the visualizer are strictly client-side; thus, server-side processing introduces unnecessary latency and architectural complexity.
+- **JavaScript Frameworks (React/Angular):** Utilizing Vanilla JavaScript ensures the core algorithmic implementations remain transparent and unobfuscated by virtual DOM abstractions or state-management overheads.
 
 ---
 
-## 3. Current Progress
+## 3. Development Progress and Feature Implementation
 
-### 3.1 Completed Features ✅
+### 3.1 Completed Milestones ✅
 
-| Feature | Description | Status |
+The core visualization engine and the primary sorting algorithms have been successfully implemented and rigorously tested.
+
+| Feature Module | Technical Description | Status |
 |---|---|---|
-| UI/UX Design | Dark-mode interface with CSS custom properties and gradient header | ✅ Done |
-| Array Generation | Random array creation with configurable size | ✅ Done |
-| Bar Rendering | Dynamic DOM-based vertical bar visualization | ✅ Done |
-| Animation Engine | Async/await-based `sleep()` and `swap()` helpers with visual delays | ✅ Done |
-| Bubble Sort | Full implementation with comparison (yellow) and swap (red) highlights | ✅ Done |
-| Selection Sort | Minimum-finding logic with visual tracking of current minimum | ✅ Done |
-| Insertion Sort | Key-based shifting animation with element insertion | ✅ Done |
-| Merge Sort | Recursive divide-and-merge with in-place visual shifts | ✅ Done |
-| Quick Sort | Partition-based sorting with pivot highlighting | ✅ Done |
-| Speed Control | Slider to adjust animation delay in real time | ✅ Done |
-| Size Control | Slider to change the number of array elements | ✅ Done |
-| Algorithm Selector | Dropdown menu to choose which sorting algorithm to run | ✅ Done |
-| Code Sync Panel | C language reference code with line-by-line highlighting during execution | ✅ Done |
-| Control Locking | UI controls disabled during sorting to prevent interference | ✅ Done |
-| Algorithm Complexity Display | Show time/space complexity (Big-O) for each algorithm | ✅ Done |
+| **Interface Architecture** | Development of a responsive, dark-mode graphical user interface (GUI). | ✅ Completed |
+| **State Generation** | Algorithmic generation of randomized numerical arrays mapped to DOM elements. | ✅ Completed |
+| **Animation Engine** | Implementation of an asynchronous execution loop utilizing `Promise`-based timeouts to govern animation cadence. | ✅ Completed |
+| **Bubble Sort** | Implementation of the $O(n^2)$ exchange sort with adjacent element comparison highlighting. | ✅ Completed |
+| **Selection Sort** | Implementation of the in-place comparison sort, featuring real-time tracking of the minimum topological value. | ✅ Completed |
+| **Insertion Sort** | Implementation of the adaptive sorting algorithm, demonstrating the dynamic shifting of sorted sub-arrays. | ✅ Completed |
+| **Merge Sort** | Implementation of the $O(n \log n)$ divide-and-conquer paradigm, featuring recursive partitioning and merging visualizations. | ✅ Completed |
+| **Quick Sort** | Implementation of the partition-exchange sort, illustrating pivot selection and sub-array partitioning. | ✅ Completed |
+| **Runtime Controls** | Interactive sliders binding to state variables for real-time manipulation of array magnitude and animation velocity. | ✅ Completed |
+| **Code Synchronization** | A reactive side-panel that maps the current execution state to specific lines of C code. | ✅ Completed |
+| **Complexity Analysis** | Dynamic rendering of Big-$O$ asymptotic time and space complexities corresponding to the active algorithm. | ✅ Completed |
 
-### 3.2 Pending / Planned Features 🔲
+### 3.2 Scheduled Objectives 🔲
 
-| Feature | Description | Status |
+Future development iterations will expand the scope of the application to include non-linear data structures and advanced metrics.
+
+| Feature Module | Technical Description | Status |
 |---|---|---|
-| Data Structure Visualizations | Linked List, Stack, Queue, Tree traversals | 🔲 Not Started |
-| Step Counter | Display the number of comparisons and swaps performed | 🔲 Not Started |
-| Mobile Responsiveness | Optimize layout for smaller screen sizes | 🔲 Not Started |
-| GitHub Pages Deployment | Deploy the live application on GitHub Pages | 🔲 Not Started |
+| **Data Structure Traversals** | Visualizing operations on Linked Lists, Stacks, Queues, and Binary Trees. | 🔲 Pending |
+| **Performance Metrics** | A quantitative step counter to empirically track runtime comparisons and memory swaps. | 🔲 Pending |
+| **Responsive Optimization** | Enhancing viewport adaptability for seamless mobile device interaction. | 🔲 Pending |
 
 ---
 
-## 4. Project Architecture
+## 4. System Architecture and Workflow
 
-### 4.1 File Structure
+### 4.1 Execution Flow
 
-```
-DSA Visualisation Project/
-├── index.html          → Main page structure (controls, visualization area, code panel)
-├── style.css           → Complete styling (dark theme, animations, transitions)
-├── script.js           → All algorithm logic, array state, event handling
-├── COLLEGE_REPORT.md   → This report
-├── README.md           → Project overview and setup instructions
-├── TECH_STACK.md       → Technology decisions and justifications
-└── PROJECT_TRACKER.md  → Development progress tracker
-```
-
-### 4.2 Application Workflow
+The application lifecycle follows a deterministic, state-driven workflow:
 
 ```mermaid
 flowchart TD
-    A["🌐 User opens index.html"] --> B["Page loads and default array appears as bars"]
-    B --> C["🎛️ User adjusts sliders and selects algorithm"]
-    C --> D["▶️ User clicks Play"]
-    D --> E["🔒 Controls disabled"]
-    E --> F["⚙️ Algorithm runs step by step"]
-    F --> G["🟡 Bars turn yellow when comparing"]
-    G --> H["🔴 Bars turn red when swapping"]
-    H --> I["💻 C code line highlights in side panel"]
-    I --> J{"Sorting done?"}
-    J -- "No" --> G
-    J -- "Yes" --> K["🟢 All bars turn green — sorted!"]
-    K --> L["🔓 Controls re-enabled — run again"]
-
-    style A fill:#6366f1,color:#fff
-    style K fill:#22c55e,color:#000
-    style L fill:#6366f1,color:#fff
+    A["System Initialization (DOM Content Loaded)"] --> B["State Instantiation: Generation of randomized array"]
+    B --> C["User Configuration: Parameter adjustment (Algorithm, Scale, Velocity)"]
+    C --> D["Execution Trigger: Invocation of sorting function"]
+    D --> E["State Lock: Disabling of global UI controls to prevent race conditions"]
+    E --> F["Algorithmic Loop Execution"]
+    F --> G["State Update: Comparison phase (Highlight elements)"]
+    G --> H{"Swap Condition Met?"}
+    H -- "True" --> I["State Mutation: Swap elements and update DOM styles"]
+    H -- "False" --> J["Advance Iterator"]
+    I --> J
+    J --> K{"Algorithm Terminated?"}
+    K -- "False" --> F
+    K -- "True" --> L["Termination State: Render final sorted visual state"]
+    L --> M["State Unlock: Restoration of global UI controls"]
 ```
 
----
+### 4.2 Visual Semantics
 
-## 5. How to Run
-
-No installation, server, or build step is required.
-
-1. Clone the repository: `git clone <repo-url>`
-2. Open `index.html` in any modern web browser.
+To reduce cognitive load, the visualization engine employs a strict color-coded semantic system during execution:
+- **Yellow:** Denotes the active evaluation or comparison of elements.
+- **Red:** Signifies a state mutation (a positional swap of elements).
+- **Green:** Indicates that an element has reached its final, asymptotically sorted position.
 
 ---
 
-## 6. Work Log — 13 & 16 August 2026
+## 5. Conclusion
 
-| Task | Details |
-|---|---|
-| Codebase Audit | Reviewed all project files and verified actual completion status of features against the project tracker |
-| Project Report | Created a formal `COLLEGE_REPORT.md` documenting project scope, tech stack, progress, architecture, and pending work |
-| Tracker Correction | Identified that `PROJECT_TRACKER.md` was outdated — all 5 sorting algorithms were already implemented but tracker showed 3 as pending |
-| Complexity Display | Implemented dynamic UI to show Big-O time and space complexity for the selected algorithm |
-
----
-
-## 7. Summary
-
-The core functionality of the DSA Visualizer — sorting algorithm animations with synchronized code highlighting — is fully implemented and functional. Five sorting algorithms (Bubble, Selection, Insertion, Merge, Quick) are complete with interactive speed and size controls. Future work includes adding data structure visualizations and deploying to GitHub Pages.
+The *semicolon;* DSA Visualizer has successfully established a robust, client-side execution environment capable of demonstrating foundational sorting algorithms with high visual fidelity. By eschewing external dependencies in favor of pure HTML, CSS, and JavaScript, the project not only serves as an educational tool for its end-users but also stands as a testament to the capabilities of native web technologies. The immediate next steps involve the expansion of the visualization library to encompass abstract data types and the finalization of the production deployment pipeline.

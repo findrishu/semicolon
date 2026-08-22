@@ -1,11 +1,11 @@
-/* Priyanshu, yeh :root wala block variables banata hai, 
+/* Tushar, this :root block defines custom CSS properties (variables), 
    taaki hum baar-baar same color ka code na likhein aur directly variable name use karein. */
 :root {
     --font-heading: 'Poppins', 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
     --font-code: 'Fira Code', 'JetBrains Mono', monospace;
     
-    /* Priyanshu, yahan se dark mode ke colors set ho rahe hain */
+    /* Tushar, defining the color palette for the dark mode theme */
     --bg-color: #0d1117; 
     --text-color: #e6edf3;
     --panel-bg: #161b22;
@@ -13,30 +13,30 @@
     --primary-accent: #58a6ff;
 }
 
-/* Priyanshu, body pe hum default margin/padding hata dete hain taaki puri screen properly use ho sake. */
+/* Tushar, resetting default margin and padding to utilize the full viewport. */
 body {
     margin: 0;
     padding: 0;
     font-family: var(--font-body);
     background-color: var(--bg-color);
     color: var(--text-color);
-    display: flex; /* Priyanshu, isse hum layout ko aasaani se control (columns/rows main) kar sakte hain */
+    display: flex; /* Tushar, using flexbox for flexible and responsive layout control */
     flex-direction: column;
     min-height: 100vh; /* Screen ki puri height cover karega */
 }
 
-/* Priyanshu, header ke box shadow se usme ek 3D look aayega thoda utha hua lagega. */
+/* Tushar, applying a box-shadow to give the header a subtle 3D elevation. */
 header {
     background-color: var(--panel-bg);
     padding: 1.5rem 2rem;
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    display: flex; /* Priyanshu, isse title aur buttons ek line mein aayenge */
+    display: flex; /* Tushar, this aligns the title and control buttons horizontally. */
     justify-content: space-between;
     align-items: center;
 }
 
-/* Priyanshu, yeh heading ka gradient effect banane ke liye hai. (Text pe rang-biranga effect) */
+/* Tushar, applies a linear-gradient text effect to the main heading. */
 header h1 {
     font-family: var(--font-heading);
     margin: 0;
@@ -49,10 +49,10 @@ header h1 {
 }
 
 header h1:hover {
-    transform: translateY(-2px); /* Priyanshu, mouse upar laane se heading halki si upar shift hogi. */
+    transform: translateY(-2px); /* Tushar, shifts the heading slightly upwards on hover for interactivity. */
 }
 
-/* Priyanshu, Button styles yahan add kar rahe hain */
+/* Tushar, defining the visual styles for the interactive buttons */
 .controls {
     display: flex;
     align-items: center;
@@ -114,7 +114,7 @@ main {
     overflow: hidden;
 }
 
-/* Priyanshu, yahan bars visualize honge, flex: 3 ka matlab yeh panel zada jagah lega (75% approx) */
+/* Tushar, styling the visualization panel to occupy a larger proportion of the container. */
 #visualization-area {
     flex: 3;
     padding: 2rem;
@@ -128,17 +128,17 @@ main {
     font-size: 1.5rem;
     color: #8b949e;
     opacity: 0.7;
-    animation: pulse 2s infinite; /* Priyanshu, yeh text dhire dhire blink/pulse karega */
+    animation: pulse 2s infinite; /* Tushar, applies an infinite pulsing animation to the text */
 }
 
-/* Priyanshu, yeh animation ka keyframe hai, kaise text ki opacity change hogi 0 se 100% tak. */
+/* Tushar, keyframes defining the opacity transition for the pulse animation. */
 @keyframes pulse {
     0% { opacity: 0.4; }
     50% { opacity: 0.8; }
     100% { opacity: 0.4; }
 }
 
-/* Priyanshu, Code panel ke liye styling flex: 1 (visualization wale se chhota hoga, approx 25%) */
+/* Tushar, styling the code panel to occupy the remaining proportion of the layout. */
 #code-panel {
     flex: 1;
     background-color: var(--panel-bg);
@@ -156,7 +156,7 @@ main {
     padding-bottom: 0.5rem;
 }
 
-/* Priyanshu, yahan code ka font size aur background theek kar rahe hain highlight.js ke default ke upar. */
+/* Tushar, overriding default highlight.js styles for font size and background. */
 .code-container {
     background: #0d1117;
     padding: 10px 0;
@@ -251,7 +251,7 @@ main {
     gap: 40px;
 }
 
-/* Priyanshu, Mobile Responsiveness */
+/* Tushar, Media queries for Mobile Responsiveness */
 @media (max-width: 800px) {
     header {
         flex-direction: column;
