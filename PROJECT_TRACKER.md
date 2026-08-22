@@ -2,7 +2,7 @@
 
 This file tracks the development progress of the DSA Visualizer project.
 
-**Last Updated:** 21 August 2026
+**Last Updated:** 22 August 2026
 
 ---
 
@@ -28,6 +28,7 @@ This file tracks the development progress of the DSA Visualizer project.
 | 16 | Data Structure Visualizations | Linked List, Stack, Queue, Tree traversals |
 | 17 | Step Counter | Count comparisons and swaps |
 | 18 | Mobile Layout | Responsive design for smaller screens |
+| 19 | GitHub Pages | Deploy live site |
 
 ---
 
@@ -35,7 +36,7 @@ This file tracks the development progress of the DSA Visualizer project.
 
 | # | Feature | Details |
 |---|---|---|
-| 1 | GitHub Pages | Deploy live site |
+| (None currently) | | |
 
 ---
 
