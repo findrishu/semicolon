@@ -1,35 +1,44 @@
-# Tech Stack — DSA Visualizer
+# Technological Infrastructure and Rationale
 
-## Frontend (Core)
-| Tech | Purpose |
+This document provides a formal breakdown of the technology stack utilized in the DSA Visualizer project, alongside the architectural rationale guiding these selections.
+
+## 1. Core Frontend Technologies
+
+The application relies strictly on fundamental web technologies to maximize performance, ensure cross-compatibility, and maintain architectural transparency.
+
+| Technology | Architectural Implementation |
 |---|---|
-| **HTML5** | Structure, semantic markup |
-| **CSS3** | Styling, animations (transitions/keyframes for bar movement, node fade-in/out) |
-| **JavaScript (Vanilla, no framework)** | All logic — sorting algorithms, DS operations, state array generation, animation control |
+| **HTML5** | Provides the semantic structural foundation of the application interface, ensuring standard compliance and DOM integrity. |
+| **CSS3** | Manages the visual presentation layer, including a robust dark-mode design system. Utilizes hardware-accelerated CSS transitions and keyframe animations for performant rendering of DOM mutations. |
+| **Vanilla JavaScript** | Serves as the primary logic and execution engine. Implements standard sorting algorithms, manages application state, orchestrates DOM manipulation, and utilizes asynchronous Promises for precise animation control. |
 
-## Reference Layer
-| Tech | Purpose |
+## 2. Reference Implementation Layer
+
+| Technology | Purpose |
 |---|---|
-| **C** | Static reference code snippets (not executed — displayed syntax-highlighted in side panel) |
+| **C Language** | Serves as the static reference implementation. C is chosen for its fundamental role in academic computer science curricula, providing a low-level programmatic context for the visual animations. |
 
-## Libraries (CDN-based, no build tools/npm needed)
-| Library | Purpose |
+## 3. External Dependencies (CDN-Based)
+
+To maintain a zero-configuration environment while enhancing functionality, external libraries are integrated strictly via Content Delivery Networks (CDNs).
+
+| Library | Functional Role |
 |---|---|
-| **highlight.js** | C code syntax highlighting |
-| **Google Fonts** | Poppins/Space Grotesk (headings), Inter (body), Fira Code/JetBrains Mono (code panel) |
+| **highlight.js** | A lightweight syntax parser utilized to apply standardized color formatting to the static C reference code, improving code readability and comprehension. |
+| **Google Fonts** | Supplies the typographic assets for the application, specifically employing *Poppins* and *Inter* for interface clarity, and *Fira Code* / *JetBrains Mono* for fixed-width code display. |
 
-## Version Control & Hosting
-| Tool | Purpose |
+## 4. Version Control and Deployment Infrastructure
+
+| Utility | Architectural Role |
 |---|---|
-| **Git + GitHub** | Collaboration, branching, PR-based workflow |
-| **GitHub Pages** | Free static deployment (no backend/server needed) |
+| **Git & GitHub** | Facilitates source code versioning, branch-based feature isolation, and collaborative engineering workflows. |
+| **GitHub Pages** | Provides immediate, continuous deployment of the static assets to a production environment without requiring server provisioning. |
 
-## Why No Framework or Build Tools
-- Adds unnecessary complexity for a college project without real benefit
-- Faculty/evaluators can see fundamentals clearly in raw HTML/CSS/JS
-- Deploys directly to GitHub Pages — no build step, no config
+## 5. Architectural Justifications for Excluded Technologies
 
-## Explicitly NOT Using
-- **Backend (Node/Express)** — everything is client-side, no server logic needed
-- **Database** — no data persistence required
-- **CSS Framework (Bootstrap/Tailwind)** — custom design system already defined in branding guidelines
+The deliberate decision to avoid modern frameworks and build tools is rooted in the pedagogical objectives of the project:
+
+- **Avoidance of JavaScript Frameworks (e.g., React, Angular):** Utilizing Vanilla JS ensures that the core algorithmic logic and DOM manipulation remain completely transparent. Abstractions like Virtual DOMs would obfuscate the direct relationship between algorithmic steps and visual updates, which is counterproductive for an educational tool.
+- **Exclusion of Backend Services (e.g., Node.js, Express):** The application’s computational requirements are entirely client-side. Implementing a server architecture would introduce unnecessary latency, complexity, and deployment overhead without providing functional benefits.
+- **Omission of CSS Frameworks (e.g., Tailwind, Bootstrap):** Implementing a bespoke CSS design system demonstrates foundational proficiency in cascading styles, responsive design, and CSS variables, aligning with academic evaluation criteria.
+- **Zero Build Configuration:** Bypassing tools like Webpack or Vite ensures that the source code remains immediately executable in any standard web browser, minimizing the barrier to entry for end-users and evaluators.

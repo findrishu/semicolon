@@ -1,49 +1,52 @@
-# DSA Visualizer — Project Tracker
+# Project Tracker — DSA Visualizer
 
-This file tracks the development progress of the DSA Visualizer project.
+This document serves as the formal tracking mechanism for the developmental milestones and feature implementations of the DSA Visualizer project.
 
 **Last Updated:** 22 August 2026
 
 ---
 
-## ✅ Completed
+## 1. Completed Development Objectives ✅
 
-| # | Feature | Details |
+The following functional modules have been successfully engineered, tested, and integrated into the production environment.
+
+| UID | Functional Requirement | Technical Implementation Details |
 |---|---|---|
-| 1 | UI/UX Setup | Dark-mode interface with CSS variables and gradient header |
-| 2 | Array Generation | Random array of configurable size |
-| 3 | Bar Rendering | Dynamic vertical bars drawn from array values |
-| 4 | Animation Helpers | `sleep()` and `swap()` functions with async delays |
-| 5 | Bubble Sort | Comparison + swap animations with color states |
-| 6 | Selection Sort | Minimum-tracking with visual highlighting |
-| 7 | Insertion Sort | Key-based shifting animation |
-| 8 | Merge Sort | Recursive divide-and-merge with in-place visual shifts |
-| 9 | Quick Sort | Partition-based sorting with pivot highlight |
-| 10 | Speed Slider | Controls animation delay |
-| 11 | Size Slider | Controls number of bars |
-| 12 | Algorithm Dropdown | Select which sorting algorithm to visualize |
-| 13 | Code Sync Panel | C reference code highlights line-by-line during execution |
-| 14 | Control Locking | UI controls disabled while sorting runs |
-| 15 | Complexity Display | Show Big-O time/space for each algorithm |
-| 16 | Data Structure Visualizations | Linked List, Stack, Queue, Tree traversals |
-| 17 | Step Counter | Count comparisons and swaps |
-| 18 | Mobile Layout | Responsive design for smaller screens |
-| 19 | GitHub Pages | Deploy live site |
+| 01 | **User Interface Architecture** | Implementation of a dark-mode GUI leveraging CSS custom properties for cohesive theme management. |
+| 02 | **State Generation** | Algorithmic generation of randomized numerical arrays with dynamic scaling capabilities. |
+| 03 | **Visualization Rendering** | Dynamic mapping of array scalar values to proportional vertical DOM nodes (bars). |
+| 04 | **Asynchronous Controller** | Implementation of `Promise`-based `sleep()` and `swap()` utility functions for animation pacing. |
+| 05 | **Bubble Sort Implementation** | Visual integration of adjacent element comparisons and subsequent height mutations. |
+| 06 | **Selection Sort Implementation** | Algorithmic tracking and visual indication of the current minimum array value. |
+| 07 | **Insertion Sort Implementation** | Visualization of dynamic sub-array shifting and key element insertion. |
+| 08 | **Merge Sort Implementation** | Recursive partitioning visualization and in-place topological shifts during the merge phase. |
+| 09 | **Quick Sort Implementation** | Partition-exchange sorting visualization featuring dynamic pivot highlighting. |
+| 10 | **Velocity Modulation** | Real-time slider control bound to the asynchronous delay coefficient. |
+| 11 | **Magnitude Modulation** | Real-time slider control governing the absolute size ($N$) of the generated dataset. |
+| 12 | **Algorithm Selector** | Dropdown interface routing execution to the selected algorithmic heuristic. |
+| 13 | **Code Synchronization** | Reactive side-panel executing DOM-based syntax highlighting in tandem with algorithm progression. |
+| 14 | **State Locking Mechanism** | Global disabling of interactive UI elements during execution to prevent race conditions. |
+| 15 | **Complexity Analysis Metrics** | Dynamic rendering of the theoretical Big-$O$ time and space complexities for the active algorithm. |
+| 16 | **Production Deployment** | Successful continuous deployment of static assets to the GitHub Pages production environment. |
 
 ---
 
-## 🔲 Planned (Future)
+## 2. Pending Development Objectives 🔲
 
-| # | Feature | Details |
+The following modules are scheduled for subsequent development iterations to expand the platform's pedagogical utility.
+
+| UID | Functional Requirement | Technical Implementation Details |
 |---|---|---|
-| (None currently) | | |
+| 17 | **Data Structure Traversals** | Visualization engines for non-linear structures (Linked Lists, Stacks, Queues, Binary Trees). |
+| 18 | **Quantitative Metrics** | Empirical step counter to track absolute comparisons and memory swaps during runtime. |
+| 19 | **Responsive Layout Optimization** | Advanced media query implementation to ensure interface fidelity on mobile viewport dimensions. |
 
 ---
 
-## 📁 File Structure
+## 3. Source Code Index
 
-| File | Purpose |
+| Filename | Structural Purpose |
 |---|---|
-| `index.html` | Main page — controls, visualization area, code panel |
-| `style.css` | Dark theme, animations, transitions |
-| `script.js` | Algorithm logic, array state, event handlers |
+| `index.html` | Application entry point; defines the semantic DOM hierarchy, controls, and visualization containers. |
+| `style.css` | Global stylesheet defining the layout paradigms, design system, and state-based transition animations. |
+| `script.js` | Core application logic, event handlers, algorithmic implementations, and DOM mutation controllers. |

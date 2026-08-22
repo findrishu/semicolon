@@ -1,54 +1,46 @@
-# Project Architecture — DSA Visualizer
+# System Architecture Documentation
 
-This document shows how the different files in this project connect and work together.
+This document delineates the structural interdependencies and execution paradigms governing the DSA Visualizer application.
 
-## How the Files Connect
+## 1. Component Interconnectivity
+
+The application architecture follows a modular, decoupled approach, leveraging standard web communication protocols.
 
 ```mermaid
 flowchart TD
-    A["🌐 index.html"]
-    B["🎨 style.css"]
-    C["⚙️ script.js"]
-    D["📦 highlight.js (CDN)"]
-    E["🔤 Google Fonts (CDN)"]
+    A["index.html (Application Entry & DOM)"]
+    B["style.css (Design System & Transitions)"]
+    C["script.js (Logic & State Management)"]
+    D["highlight.js (External Syntax Parser)"]
+    E["Google Fonts (Typography Assets)"]
 
-    A -- "loads styles from" --> B
-    A -- "loads logic from" --> C
-    A -- "loads library" --> D
-    A -- "loads fonts" --> E
-    C -- "reads user input from" --> A
-    C -- "updates bars & code panel in" --> A
-    D -- "colors the C code in" --> A
-
-    style A fill:#6366f1,color:#fff
-    style B fill:#ec4899,color:#fff
-    style C fill:#eab308,color:#000
-    style D fill:#22c55e,color:#000
-    style E fill:#3b82f6,color:#fff
+    A -- "Imports styling rules" --> B
+    A -- "Executes initialization logic" --> C
+    A -- "Fetches parsing library via CDN" --> D
+    A -- "Fetches typographic assets via CDN" --> E
+    C -- "Queries DOM state and events" --> A
+    C -- "Mutates DOM nodes and classes" --> A
+    D -- "Applies syntax formatting classes" --> A
 ```
 
-## What Each File Does
+## 2. File Responsibilities
 
-| File | Role |
+| Component | Architectural Responsibility |
 |---|---|
-| `index.html` | The main page — has the buttons, sliders, visualization area, and code panel |
-| `style.css` | Controls how everything looks — dark theme, bar colors, animations |
-| `script.js` | The brain — generates arrays, runs sorting algorithms, animates the bars |
+| `index.html` | Serves as the primary viewport and structural skeleton. It contains the semantic markup for the interactive controls, the SVG/Div-based visualization canvas, and the syntax-highlighted code panel. |
+| `style.css` | Implements the visual presentation layer. It defines global CSS variables for theme consistency, establishes flexbox-based responsive layouts, and declares hardware-accelerated keyframe animations and transitions. |
+| `script.js` | Functions as the core controller. It handles array generation algorithms, orchestrates the asynchronous sorting routines, and manipulates the DOM to reflect state changes over time. |
 
-## The Core Pattern
+## 3. Core Algorithmic Execution Pattern
 
-Every sorting algorithm in this project follows the same 3-step pattern:
+Regardless of the specific sorting methodology selected (e.g., Bubble Sort, Merge Sort), the application adheres to a uniform, three-phase execution lifecycle:
 
 ```mermaid
 flowchart LR
-    A["1️⃣ Generate Array"] --> B["2️⃣ Run Algorithm"]
-    B --> C["3️⃣ Animate Each Step"]
-
-    style A fill:#6366f1,color:#fff
-    style B fill:#eab308,color:#000
-    style C fill:#22c55e,color:#000
+    A["Phase I: State Generation"] --> B["Phase II: Algorithm Execution"]
+    B --> C["Phase III: Asynchronous Animation"]
 ```
 
-1. **Generate** — Create a random array and draw it as bars on screen
-2. **Run** — Execute the sorting algorithm step by step
-3. **Animate** — At each step, change bar colors and heights so the user can see what's happening
+1. **State Generation:** The system procedurally instantiates a one-dimensional array populated with randomized scalar values, mapped proportionally to vertical DOM elements within the visualization canvas.
+2. **Algorithm Execution:** The selected sorting algorithm traverses the array. Instead of instantaneous mutation, mathematical operations (comparisons and swaps) trigger state updates.
+3. **Asynchronous Animation:** A custom asynchronous controller intercepts algorithm state changes, utilizing `Promise`-based delays to render sequential visual updates (color state shifts and height mutations), allowing users to observe computational progression in real-time.
